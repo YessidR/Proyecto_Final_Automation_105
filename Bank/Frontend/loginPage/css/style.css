@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 body{
@@ -13,6 +15,7 @@ body{
    padding-top: 100px;
    padding-bottom: 100px;
    padding-right: 100px;
+   
 }
 
 .bank-img{
@@ -21,6 +24,8 @@ body{
     width: 620px;
     background-color: rgba(175, 68, 37, 0.5);
     position: relative;
+    border: 1px solid #BFBFBF;
+    box-shadow: 10px 10px 5px #aaaaaa;
     
 }
 .bank-logo{
@@ -47,51 +52,87 @@ body{
     
     height: 800px;
     width: 620px;
-    padding-right: 100px;
-    align-items: center;
-    align-content: center;
+
+    border: 1px solid #BFBFBF;
+    box-shadow: 10px 10px 5px #aaaaaa;
 
 }
 
 .login-text{
-    margin: auto;
-    width: 50%;
+    
     padding-top: 30%;
-    padding-bottom: 30%;
+    padding-bottom: 20%;
+    
     text-align: center;
-    font-family: 'Inter';
+   
     font-style: normal;
     font-weight: 400;
     font-size: 40px;
     line-height: 48px;
     text-align: center;
 }
-.input-field{
 
+
+.input-field{
+    
+    display: grid;
+    justify-content: center;
+        
+}
+
+.input-password{
+    width: 200px;
+    height: 40px;
+
+    background: #D9D9D9;
+    opacity: 0.8;
+    border-radius: 15px;
+    margin: 5%;
+    text-align: center;
+}
+
+.input-name{
+
+    width: 200px;
+    height: 40px;
+
+    background: #D9D9D9;
+    opacity: 0.8;
+    border-radius: 15px;
+    margin: 5%;
+    text-align: center;
+    
 }
 
 .login-btn-area{
-    padding: 10%;
+    display: grid;
+    justify-content: center;
+
+    padding-top: 15%;
+    padding-bottom: 20%;
+
     align-content: center;
 }
+
 .login-btn{
+    
     width: 185px;
-    height: 49px;
-    left: 937px;
-    top: 721px;
+    height: 65px;
     background: #AF4425;
     opacity: 0.75;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 60px;
 
     font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 27px;
-line-height: 33px;
-/* identical to box height */
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 33px;
+    align-self: center;
+    /* identical to box height */
 
-text-align: center;
+    text-align: center;
+    color: #FFFFFF;
+    align-self: center;
 
-color: #FFFFFF;
 }
