@@ -1,0 +1,37 @@
+CREATE TABLE "student" (
+	"ID_Student"	INTEGER NOT NULL UNIQUE,
+	"Year"	INTEGER NOT NULL, career_id INTEGER REFERENCES career(Id_Career), subject_id INTEGER REFERENCES subject(Id_Subject),
+	PRIMARY KEY("ID_Student" AUTOINCREMENT)
+)
+
+CREATE TABLE "teacher" (
+	"Id_Teacher"	INTEGER NOT NULL UNIQUE,
+	"Title"	TEXT NOT NULL,
+	PRIMARY KEY("Id_Teacher" AUTOINCREMENT)
+)
+
+CREATE TABLE "subject" (
+	"Id_Subject"	INTEGER NOT NULL UNIQUE,
+	"Name"	TEXT NOT NULL,
+	"Level"	TEXT NOT NULL,
+	"Semester"	INTEGER NOT NULL, Teacher_ID INTEGER REFERENCES teacher(Id_Teacher), Career_ID INTEGER REFERENCES career(Id_Career),
+	PRIMARY KEY("Id_Subject" AUTOINCREMENT)
+)
+
+CREATE TABLE "user" (
+	"id_User"	INTEGER NOT NULL UNIQUE,
+	"username"	TEXT NOT NULL,
+	"password"	TEXT NOT NULL,
+	"First_Name"	TEXT NOT NULL,
+	"Last_Name"	TEXT NOT NULL,
+	"Phone_Number"	INTEGER NOT NULL,
+	"Email"	TEXT NOT NULL,
+	"Type"	BLOB NOT NULL,
+	PRIMARY KEY("id_User" AUTOINCREMENT)
+)
+
+CREATE TABLE "career" (
+	"Id_Career"	INTEGER NOT NULL UNIQUE,
+	"Name"	TEXT NOT NULL,
+	PRIMARY KEY("Id_Career" AUTOINCREMENT)
+);

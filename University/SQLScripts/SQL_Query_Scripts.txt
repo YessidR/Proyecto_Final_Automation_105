@@ -1,0 +1,8 @@
+-- View First and Last Name of all Students -- 
+SELECT
+	First_Name,
+	Last_Name
+FROM
+	user
+WHERE
+	Type = Student;
