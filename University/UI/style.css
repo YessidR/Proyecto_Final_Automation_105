@@ -132,3 +132,57 @@ img {
 .code-input {
     width: 48px;
 }
+
+
+.name-top-content{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    justify-content: center;
+}
+.content-table{
+    margin: 20px auto;
+    width: 600px;
+}
+
+table{
+    background-color: rgb(192, 192, 192);
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+th,td{
+    padding: 20px;
+}
+thead{
+    background-color: #468BBD;
+    border-bottom: solid 5px #3a3df0;
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color: white;
+}
+tr:hover td{
+    background-color: #3a3df0;
+    color: white;
+    transition: 0.5s;
+}
+.add-subject{
+    justify-content: space-between;
+    background-color: white;
+    margin: 5px;
+    color: #468BBD;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    height: 25px;
+    margin-top: 50px;
+    margin-right: 20px;
+    width: 120px;
+}
+.add-subject:hover{
+    background-color: green;
+    color: white;
+    transition: 0.9s;
+}
