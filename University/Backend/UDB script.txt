@@ -1,0 +1,69 @@
+
+
+CREATE TABLE Career (
+    id_career   INTEGER PRIMARY KEY AUTOINCREMENT
+                        NOT NULL,
+    name        TEXT    NOT NULL,
+    id_semester INTEGER REFERENCES Semester (id_semester) 
+                        NOT NULL
+);
+
+
+CREATE TABLE Semester (
+    id_semester INTEGER PRIMARY KEY AUTOINCREMENT
+                        NOT NULL,
+    start_date  DATE    NOT NULL,
+    end_date    DATE    NOT NULL,
+    number      INTEGER NOT NULL,
+    id_subject  INTEGER REFERENCES Subject (id_subject) 
+                        NOT NULL,
+    id_student  INTEGER REFERENCES Student (id_student) 
+                        NOT NULL
+);
+
+
+CREATE TABLE Subject (
+    id_subject INTEGER PRIMARY KEY AUTOINCREMENT
+                       NOT NULL,
+    name       TEXT    NOT NULL,
+    id_teacher INTEGER REFERENCES Teacher (id_teacher) 
+                       NOT NULL
+);
+
+CREATE TABLE Teacher (
+    id_teacher INTEGER PRIMARY KEY AUTOINCREMENT
+                       NOT NULL,
+    first_name TEXT    NOT NULL,
+    last_name  TEXT    NOT NULL
+);
+
+
+CREATE TABLE Student (
+    id_student    INTEGER PRIMARY KEY AUTOINCREMENT
+                          NOT NULL,
+    first_name    TEXT    NOT NULL,
+    last_name     TEXT    NOT NULL,
+    phone         INTEGER NOT NULL,
+    username      VARCHAR UNIQUE
+                          NOT NULL,
+    password      VARCHAR NOT NULL,
+    id_enrollment INTEGER REFERENCES Enrollment (id_enrollment) 
+                          NOT NULL,
+    id_code       INTEGER REFERENCES Code (id_code) 
+                          NOT NULL
+);
+
+CREATE TABLE Code (
+    id_code INTEGER PRIMARY KEY AUTOINCREMENT
+                    NOT NULL,
+    code    TEXT    NOT NULL
+                    UNIQUE
+);
+
+CREATE TABLE Enrollment (
+    id_enrollment   INTEGER PRIMARY KEY AUTOINCREMENT
+                         NOT NULL,
+    validation_date DATE NOT NULL,
+    date            DATE NOT NULL
+);
+
