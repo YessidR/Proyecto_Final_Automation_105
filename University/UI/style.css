@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Lato', sans-serif;
 }
 
 
@@ -20,7 +21,7 @@ a {
     align-items: center;
 }
 
-.header {
+header {
     position: absolute;
     left: 0%;
     right: 0%;
@@ -29,12 +30,16 @@ a {
     background: linear-gradient(0deg, rgba(0, 32, 116, 0.46), rgba(0, 32, 116, 0.46)), #468BBD;
 }
 
+.header-container{
+    font-size: 22px;
+    display:flex;
+    justify-content: space-between;
+    
+}
 .home-btn {
     position: absolute;
     left: 5.7%;
     top: 50%;
-
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -46,9 +51,30 @@ a {
 img {
     position: absolute;
     left: 12%;
-
     bottom: 90%;
 
+}
+.header-options{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.enroll-btn{
+    background-color: white;
+    margin: 5px;
+    color: #468BBD;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    height: 25px;
+    margin-top: 50px;
+    margin-right: 20px;
+}
+.enroll-btn:hover{
+    background-color: green;
+    color: white;
+    transition: 0.9s;
 }
 
 .sidebar {
@@ -64,12 +90,68 @@ img {
 }
 
 .sidebar-btn {
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     margin: 25px;
     letter-spacing: 0.15px;
+    padding: 20px;
     color: rgba(0, 0, 0, 0.87);
+}
+
+.sidebar-btn:hover{
+    background-color: rgb(184, 181, 181);
+}
+
+.name-top-content{
+    display: flex;
+    flex-direction: row;
+    margin-top: 25px;
+    justify-content: center;
+}
+.content-table{
+    margin: 20px auto;
+    width: 600px;
+}
+
+table{
+    background-color: rgb(192, 192, 192);
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+th,td{
+    padding: 20px;
+}
+thead{
+    background-color: #468BBD;
+    border-bottom: solid 5px #3a3df0;
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color: white;
+}
+tr:hover td{
+    background-color: #3a3df0;
+    color: white;
+    transition: 0.5s;
+}
+.add-subject{
+    justify-content: space-between;
+    background-color: white;
+    margin: 5px;
+    color: #468BBD;
+    border-radius: 5px;
+    padding: 15px;
+    cursor: pointer;
+    height: 25px;
+    margin-top: 50px;
+    margin-right: 20px;
+    width: 120px;
+}
+.add-subject:hover{
+    background-color: green;
+    color: white;
+    transition: 0.9s;
 }
