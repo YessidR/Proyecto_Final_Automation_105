@@ -7,10 +7,10 @@ let userEnrolled = false
 let codeElement1 = document.getElementById("code1");
 let codeElement2 = document.getElementById("code2");
 let checkCodeHandler = document.querySelector(".btn-check-code");
-let modalElement = document.querySelector(".modal-text")
-const modalContainer = document.querySelector(".modal-container")
-const modalCloseButton = document.querySelector(".modal-close")
-const checkBoxes = document.getElementsByName("checkbox")
+let modalElement = document.querySelector(".modal-text");
+const modalContainer = document.querySelector(".modal-container");
+const modalCloseButton = document.querySelector(".modal-close");
+const checkBoxes = document.getElementsByName("checkbox");
 
 checkCodeHandler.addEventListener('click', checkCodes)
 modalCloseButton.addEventListener('click', hideModal)
@@ -74,4 +74,15 @@ if (userEnrolled == false) {
     checkBoxes.forEach(element => {
         element.disabled = true;
     });
+}
+
+
+const maxSubjects = 5;
+for (var i = 0; i < checkBoxes.length; i++)
+  checkBoxes[i].onclick = selectiveCheck;
+
+function selectiveCheck (event) {
+  let checkedChecks = document.querySelectorAll(".subject-checkbox:checked");
+  if (checkedChecks.length >= maxSubjects + 1)
+    return false;
 }
