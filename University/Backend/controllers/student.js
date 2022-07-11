@@ -1,13 +1,12 @@
-const database = require('../config/database');
+const { database } = require('../config/database');
 
 const studentEnrollment  = async (req, res, next) => {
     let data = {
-        "year": 199,
-        "validate_date": 2030,
-        "date": 4,
+        "validation_date": Date(),
+        "date": Date(),
     }
-    let query = "INSERT INTO Student (year, id_career, id_subject) VALUES (?, ?, ?)"
-    database.run(query, [data.year, data.id_career, data.id_subject], function (err, result) {
+    let query = "INSERT INTO Enrollment (validation_date, date) VALUES (?, ?)"
+    database.run(query, [data.validation_date, data.date], function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
             return;
