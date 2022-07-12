@@ -1,0 +1,15 @@
+INSERT INTO Teller (Name, LastName, User, Password) VALUES ("admin", "admin", "admin", "21232f297a57a5a743894a0e4a801fc3");
+INSERT INTO Teller (Name, LastName, User, Password) VALUES ("Alan", "Brito", "alanbrito", "e420c33ec3207e1f3609bc8f8edb992b");
+INSERT INTO Teller (Name, LastName, User, Password) VALUES ("Elena", "Nito", "elenanito", "938a5ae9f9c44aa4c4df3742f7d42841");
+INSERT INTO User (Name, LastName, User, Password, Email) VALUES ("Carlos", "Menacho", "carlosmenacho", "d489db2778f4b0fda1fb77bdc982fb67", "carlosmenacho@jalasoft.com");
+INSERT INTO User (Name, LastName, User, Password, Email) VALUES ("Jhimi", "Vargas", "jhimivargas", "9f33a3f7164e4f6d5e7e699385b0a4b6", "jhimivargas@jalasoft.com");
+INSERT INTO User (Name, LastName, User, Password, Email) VALUES ("Juan Pablo", "von Landwüst", "juanpavon", "8db21c7ba3b572a7043a220582b2163a", "juanpavon@jalasoft.com");
+INSERT INTO University (Name, DepositAmount, User, Password, Email) VALUES ("Universidad Católica", 1000.11, "uc", "d38af049e086eb7b59102bcf0c93974c", "contacto@uc.edu");
+INSERT INTO University (Name, DepositAmount, User, Password, Email) VALUES ("Universidad Mayor", 2000.20, "um", "0dd00e33b6fc67b811ebe3177217d6c0", "contacto@um.edu");
+INSERT INTO University (Name, DepositAmount, User, Password, Email) VALUES ("Universidad Autónoma", 3000.30, "ua", "5269f4d75f5bc75f0f94bab2100a5531", "contacto@ua.edu");
+INSERT INTO BussinessAccount (Number, Balance, Currency, Type, Status, BussinessID) VALUES ("1111-1111", 0.00, "USD", "Savings", "Active", 1);
+INSERT INTO BussinessAccount (Number, Balance, Currency, Type, Status, BussinessID) VALUES ("2222-2222", 0.00, "USD", "Savings", "Active", 2);
+INSERT INTO BussinessAccount (Number, Balance, Currency, Type, Status, BussinessID) VALUES ("3333-3333", 0.00, "USD", "Savings", "Active", 3);
+INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("9999-9999", 2000.00, "USD", "Savings", "Active", 1);
+INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("8888-8888", 2000.00, "USD", "Savings", "Active", 2);
+INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("7777-7777", 2000.00, "USD", "Savings", "Active", 3);
