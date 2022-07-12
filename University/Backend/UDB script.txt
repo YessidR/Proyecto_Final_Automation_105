@@ -58,8 +58,16 @@ CREATE TABLE Student (
 CREATE TABLE Code (
     id_code INTEGER PRIMARY KEY AUTOINCREMENT
                     NOT NULL,
-    code    TEXT    NOT NULL
-                    UNIQUE
+    code1   TEXT    NOT NULL
+                    UNIQUE,
+    code2   TEXT    UNIQUE
+                    NOT NULL,
+    code3   TEXT    NOT NULL
+                    UNIQUE,
+    code4   TEXT    UNIQUE
+                    NOT NULL,
+    code5   TEXT    UNIQUE
+                    NOT NULL
 );
 
 CREATE TABLE Enrollment (
