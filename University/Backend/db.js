@@ -1,4 +1,3 @@
-
 // const {http, express, app, sqlite3, path} = require('./back.js')
 const {sqlite3, path} = require('./back.js')
 
@@ -11,5 +10,7 @@ const db = new sqlite3.Database(db_name, err => {
         console.log("Conexion exitosa con la base de datos")
     }
 })
+
+// Crear funcion para crear tablas, y peticiones de la base de datos...
 
 module.exports = {db_name, db}
