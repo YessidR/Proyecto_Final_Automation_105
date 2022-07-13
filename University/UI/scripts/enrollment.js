@@ -1,11 +1,12 @@
 //list of codes pulled from db
 const codes = ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"]
-let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Something else", "Computer science"]
+let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Something else", "Computer science", "data science", "something "]
 
 
 //this boolean will be pulled from student class
 let userEnrolled = false
 
+//dom elements
 let codeElement1 = document.getElementById("code1");
 let codeElement2 = document.getElementById("code2");
 let checkCodeHandler = document.querySelector(".btn-check-code");
@@ -16,7 +17,7 @@ const checkBoxes = document.getElementsByName("checkbox");
 const endEndrollmentButton = document.querySelector(".end-enrollment")
 
 
-
+//event listeners
 checkCodeHandler.addEventListener('click', checkCodes)
 modalCloseButton.addEventListener('click', hideModal)
 endEndrollmentButton.addEventListener('click', setSubjects)
