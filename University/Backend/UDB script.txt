@@ -17,7 +17,7 @@ CREATE TABLE Semester (
     start_date  DATE    NOT NULL,
     end_date    DATE    NOT NULL,
     number      INTEGER NOT NULL,
-    id_subject  INTEGER REFERENCES Subject (id_subject) 
+    id_subject  TEXT    REFERENCES Subject (id_subject) 
                         NOT NULL,
     id_student  INTEGER REFERENCES Student (id_student) 
                         NOT NULL
@@ -29,7 +29,8 @@ CREATE TABLE Subject (
                        NOT NULL,
     name       TEXT    NOT NULL,
     id_teacher INTEGER REFERENCES Teacher (id_teacher) 
-                       NOT NULL
+                       NOT NULL,
+    id_career  INTEGER REFERENCES Career (id_career) 
 );
 
 CREATE TABLE Teacher (
@@ -49,6 +50,7 @@ CREATE TABLE Student (
     username      VARCHAR UNIQUE
                           NOT NULL,
     password      VARCHAR NOT NULL,
+    status        BOOLEAN,
     id_enrollment INTEGER REFERENCES Enrollment (id_enrollment) 
                           NOT NULL,
     id_code       INTEGER REFERENCES Code (id_code) 
