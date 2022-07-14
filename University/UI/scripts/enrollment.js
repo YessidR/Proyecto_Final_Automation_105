@@ -1,9 +1,12 @@
 //list of codes pulled from db
 const codes = ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"]
+let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Something else", "Computer science", "data science", "something "]
+
 
 //this boolean will be pulled from student class
 let userEnrolled = false
 
+//dom elements
 let codeElement1 = document.getElementById("code1");
 let codeElement2 = document.getElementById("code2");
 let checkCodeHandler = document.querySelector(".btn-check-code");
@@ -11,9 +14,24 @@ let modalElement = document.querySelector(".modal-text");
 const modalContainer = document.querySelector(".modal-container");
 const modalCloseButton = document.querySelector(".modal-close");
 const checkBoxes = document.getElementsByName("checkbox");
+const endEndrollmentButton = document.querySelector(".end-enrollment")
 
+
+//event listeners
 checkCodeHandler.addEventListener('click', checkCodes)
 modalCloseButton.addEventListener('click', hideModal)
+endEndrollmentButton.addEventListener('click', setSubjects)
+
+
+const subjectContainer = document.querySelector(".subject-container")
+courses.forEach(course => {
+    
+    var newDiv = document.createElement("div");
+    newDiv.className = 'subject';
+    newDiv.innerHTML = (`${course} <input class="subject-checkbox" type="checkbox" name="checkbox" id="checksubject"></div>`);
+
+    subjectContainer.appendChild(newDiv)
+});
 
 
 function hideModal() {
@@ -81,8 +99,26 @@ const maxSubjects = 5;
 for (var i = 0; i < checkBoxes.length; i++)
   checkBoxes[i].onclick = selectiveCheck;
 
-function selectiveCheck (event) {
+function selectiveCheck () {
   let checkedChecks = document.querySelectorAll(".subject-checkbox:checked");
   if (checkedChecks.length >= maxSubjects + 1)
     return false;
+}
+
+
+function setSubjects () {
+    let checkedChecks = document.querySelectorAll(".subject-checkbox:checked");
+    if (checkedChecks.length > 0) {
+        enrolledsubjects = []
+        checkedChecks.forEach(checkbox => {
+            let checkedSubjectElem =checkbox.parentElement
+
+            enrolledsubjects.push(checkedSubjectElem.textContent)
+
+        });
+        alert(`You have successfully enrolled in ${enrolledsubjects.join(". ")}`)
+    } else {
+        alert("No subjects selected!")
+    }
+    return enrolledsubjects
 }
