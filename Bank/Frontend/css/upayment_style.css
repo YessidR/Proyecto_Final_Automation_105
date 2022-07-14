@@ -10,7 +10,7 @@
 }
 
 body{
-   background-color: #f3f5f9;
+   background-color: #EBDCB2;
 }
 
 .wrapper{
@@ -18,7 +18,7 @@ body{
   position: relative;
 }
 
-.wrapper .sidebar{
+.sidebar{
   width: 200px;
   height: 100%;
   background: #662E1c;
@@ -26,76 +26,109 @@ body{
   position: fixed;
 }
 
-.wrapper .sidebar h2{
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 30px;
-}
 
-.wrapper .sidebar ul li{
+
+ul li{
   padding: 15px;
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   border-top: 1px solid rgba(255,255,255,0.05);
 }    
 
-.wrapper .sidebar ul li a{
+a{
   color: white;
   display: block;
 }
 
-.wrapper .sidebar ul li a .fas{
+.fas{
   width: 25px;
 }
 
-.wrapper .sidebar ul li:hover{
+li:hover{
   background-color: #8d684f;
 }
     
-.wrapper .sidebar ul li:hover a{
+li:hover a{
   color: #fff;
 }
  
-.wrapper .sidebar .social_media{
+.social_media{
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
+
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 .wrapper .sidebar .social_media a{
-  display: block;
-  width: 40px;
-  background: rgba(0, 0 ,0, 0);
-  height: 40px;
-  line-height: 45px;
-  text-align: center;
-  margin: 0 5px;
-  color: #bdb8d7;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  color: white;
 }
 
-.wrapper .main_content{
+.main_content{
   width: 100%;
   margin-left: 200px;
+  background-color: #EBDCB2;
 }
 
-.wrapper .main_content .header{
-  padding: 20px;
-  background: #fff;
-  color: #717171;
-  border-bottom: 1px solid #e0e4e8;
+.header{
+  padding: 90px;
+  
+  color: black;
+  text-align: center;
+  font-size: 200%;
 }
 
 .wrapper .main_content .info{
   margin: 20px;
   color: #717171;
-  line-height: 25px;
 }
 
-.wrapper .main_content .info div{
-  margin-bottom: 20px;
+.user-id{
+
+  text-align: center;
+  flex-direction: column;
 }
+.student-id{
+  margin: 3%;
+  background-color: #D9D9D9;
+  border: none;
+  padding: 16px 32px;
+}
+.payment-info{
+
+  text-align: center;
+  margin: 5%;
+  padding: 3%;
+}
+
+.student-pay{
+
+  margin: 2%;
+  padding: 2%;
+  display: grid;
+}
+
+.pay-btn{
+  
+  margin-left: 30%;
+  margin-right: 30%;
+  font-size: 40px;
+
+  padding: 1%;
+  background: #AF4425;
+  align-self: center;
+  opacity: 0.75;
+  border-radius: 30px;  
+
+}
+
+
+
+
+
+
