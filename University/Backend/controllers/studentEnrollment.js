@@ -3,7 +3,6 @@ const { insertEnrollment } = require('../config/databaseManager')
 const { getAllStudentEnrollment, 
     getStudentEnrollmentById, 
     insertStudentEnrollment, 
-    updateStudent,
     deleteStudent} = require('../config/studentEnrollment')
 
 
@@ -26,12 +25,8 @@ const getAllStudentEnrollments = async(req, res, next) => {
     getAllStudentEnrollment(res)
 }
 
-const updateStudents = async(req, res, next) => {
-    updateStudent(30, 3, res);
-}
-
 const deleteStudents = (req, res, next) => {
     deleteStudent(req.params.id, res)
 }
 
-module.exports = { studentEnrollment, getEnrollment, updateStudents, deleteStudents, getAllStudentEnrollments};
+module.exports = { studentEnrollment, getEnrollment, deleteStudents, getAllStudentEnrollments};
