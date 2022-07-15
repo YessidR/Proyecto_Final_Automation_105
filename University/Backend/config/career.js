@@ -18,6 +18,20 @@ function insertCareer(data,res){
     return res;
 }
 
+const getAllCareer = (res) => { 
+    let query = "SELECT * FROM Career"
+    database.all(query, (err, data) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data": data
+        })
+      });
+}
+
 // Update Career row with data json
 function updateCareer(data, semesterId, res){
     let query = 'UPDATE Career set id_semester= coalesce(?,id_semester) WHERE id_career = ?';
@@ -27,7 +41,6 @@ function updateCareer(data, semesterId, res){
             "data": data,
             changes : this.changes
         })
-        
     });
 }
 
@@ -62,4 +75,4 @@ function getCareerById(careerId, res){
     });
 }
 
-module.exports = { insertCareer,updateCareer, deleteCareer, getCareerById };
+module.exports = { insertCareer,updateCareer, deleteCareer, getCareerById, getAllCareer };
