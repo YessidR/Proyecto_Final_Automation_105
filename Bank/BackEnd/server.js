@@ -1,13 +1,23 @@
+const cors = require("cors");
 const express = require("express");
 const http = require("http");
 const db = require("./database.js");
+
 const paymentenrollement = require("./endpoints/routes/payment")
 const login = require("./endpoints/routes/user")
 const userlogin = require("./endpoints/routes/userlogin");
 
+const corsOptions = {
+   origin: '*',
+   credentials: true,            //access-control-allow-credentials:true
+   optionSuccessStatus: 200,
+}
+
 const app = express();
 const server = http.createServer(app);
 const HTTP_PORT = 8000;
+
+app.use(cors(corsOptions));
 
 server.listen(HTTP_PORT, () => {
     console.log("Server running on port", HTTP_PORT);
