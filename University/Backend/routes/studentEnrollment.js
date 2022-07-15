@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { studentEnrollment, 
     getEnrollment, 
-    updateStudents, 
     deleteStudents,
     getAllStudentEnrollments } = require('../controllers/studentEnrollment');
 
