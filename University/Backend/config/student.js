@@ -18,6 +18,20 @@ function insertStudent(data,res){
     return res;
 }
 
+const getAllStudent = (res) => { 
+    let query = "SELECT * FROM Student"
+    database.all(query, (err, data) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data": data
+        })
+      });
+}
+
 // Delete Student row
 function deleteStudent(studentId, res){
     database.run(
@@ -49,4 +63,4 @@ function getStudentById(studentId, res){
     });
 }
 
-module.exports = { insertStudent, deleteStudent, getStudentById };
+module.exports = { insertStudent, deleteStudent, getStudentById, getAllStudent};

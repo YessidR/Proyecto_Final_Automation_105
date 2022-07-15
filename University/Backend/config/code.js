@@ -18,7 +18,21 @@ function insertCode(data,res){
     return res;
 }
 
-// Select row from Code table using id_code
+const getAllCode = (res) => { 
+    let query = "SELECT * FROM Code"
+    database.all(query, (err, data) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data": data
+        })
+      });
+}
+
+// Select row from Teacher table using id_teacher
 function getCodeById(codeId, res){
     let query = "SELECT * FROM Code WHERE id_code = ?"
     database.get(query, codeId, (err,data)=>{
@@ -34,4 +48,19 @@ function getCodeById(codeId, res){
     });
 }
 
-module.exports = { insertCode, getCodeById };
+// Delete Code row()
+function deleteCode(codeId, res){
+    database.run(
+        'DELETE FROM Code WHERE id_code = ?',
+        codeId,
+        function (err, result){
+            if (err){
+                res.status(400).json({"error": res.message})
+                return;
+            }
+            res.json({"message":"delete", changes: this.changes})
+        }
+    );
+}
+
+module.exports = { insertCode, getCodeById, deleteCode, getAllCode};
