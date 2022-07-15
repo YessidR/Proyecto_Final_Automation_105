@@ -1,0 +1,125 @@
+/*Importamos el tipo de letra a usar*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300&display=swap');
+
+/*Se reinicia los valores del html*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+/*Las reglas del tipo de letra que usamos*/
+body{
+    font-family: 'Roboto', sans-serif;
+    background-position:center;
+    background-size: cover; /*extiende la imagen*/
+    display: flex; /*ayuda a centrar*/
+    min-height: 100vh;
+    background-image: url(/src/login.png); /*Imagen de fondo*/
+    background-repeat: no-repeat;
+    z-index: -1;
+    backdrop-filter: brightness(0.65); /*Oscurece la imagen*/
+}
+
+/*ayuda a ccentrar el formulario gracias al flexbox de arriba*/
+/*recuadro del formulario*/
+.form{
+    z-index: 1;
+    background-color: #fff;
+    margin: auto; /*centra el recuadro*/
+    width: 40%; /*que el 60% de la imagen no sea mayor a 400px*/
+    max-width: 350px; /*ayuda a adaptar a dispositivos moviles*/
+    padding: 15px 20px; /*tamaño del recuadro*/
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px rgb(0 0 0 / 30%); /*0 en x, 5px en Y, un blur de 10px y un sprit de -5px,color negro y 30% de transparencia*/
+    text-align: center; /*centra el texto*/
+}
+
+/*Titulo Universidad*/
+.form_title{
+    color: #212121;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+/*contenedor de los input*/
+.form_container{
+    margin-top: 25px;
+    display: grid; /*organiza en rejilla*/
+    gap: 2em; /*espacio*/
+    text-align: center;
+}
+
+.form_group{
+    position: relative; /*usar fixed para acomodar a un lado*/
+    --color:#5757577e; /*se crea como variable y se repite*/
+    text-align: center;
+}
+
+.form_input{
+    width:90%; /*tamaño de la linea*/
+    background: none; /*sin fondo*/
+    color: #706c6c; /*color de la linea*/
+    font-size: 1rem; /*tamaño de la letra*/
+    padding: .3em .3em; /*espacio entre letra y linea*/
+    border: none; /*Quita el cuadro de input*/
+    outline: none; /*Quita el cuadro de input*/
+    border-bottom: 1px solid var(--color); /*Coloca la linea de esccribir*/
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+}
+
+/*la letra dentro del recuadreo*/
+.form_label{
+    color: var(--color);
+    cursor: pointer;
+    position: absolute;
+    top: o;
+    left: 5px;
+    transform: translateY(10px); /*baja texto nombre*/
+    transition: transform .5s, color .3s;
+    padding-left: 15px;
+}
+
+/*se vuelve mas oscuro al activar el input*/
+.form_input:not(:placeholder-shown){
+    color: #4d4646;
+}
+
+/*Efecto para subir label uaurio y contraseña*/
+.form_input:focus + .form_label, /*Form input este activo en la pseudoclase focus se usa el '+'*/
+.form_input:not(:placeholder-shown) + .form_label{ /*cuando el form input no esta vacio*/
+    transform: translateY(-12px) scale(.7);
+    transform-origin: left top;
+    color: #3866f2;
+}
+
+/*Show password*/
+.show_pass{
+    text-align: left;
+    font-size: 15px;
+    margin-top: -12px;
+    padding-left: 15px;
+}
+
+/*Caracteristicas del boton*/
+.form_submit{
+    background: #3866f2;
+    background-size: 30%;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    padding: .8em 0;
+    border: none;
+    border-radius: .5em;
+    cursor:pointer;
+    padding-top: .8em;
+}
+
+/*para dispositivos moviles*/
+@media (max-width:425px){
+    .form_title{
+        font-size: 1.8rem;
+    }
+}
