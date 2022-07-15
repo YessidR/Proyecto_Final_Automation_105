@@ -8,7 +8,6 @@ const pay = {
     Amount: "50",
     Type: "ahorros",
     Details: "pago virtual",
-
 }
 
 const apppayment = () => {
