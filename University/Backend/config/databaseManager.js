@@ -96,21 +96,4 @@ const createTables = () => {
     })
 }
 
-function insertEnrollment(data,res){
-    let query = "INSERT INTO Enrollment (validation_date, date) VALUES (?, ?)"
-    database.run(query, [data.validation_date, data.date], function (err, result) {
-        if (err){
-            res.status(400).json({"error": err.message})
-            return;
-        }
-        res.json({
-            "message": "success",
-            "data": data,
-            "id" : this.lastID
-        });
-        
-    })
-    return res;
-}
-
-module.exports = { database, insertEnrollment };
+module.exports = { database };
