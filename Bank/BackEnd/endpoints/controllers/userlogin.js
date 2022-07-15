@@ -8,13 +8,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json);
 
 const userlogin = (req, res) => {
-    
-    let data = {
-        username: req.body.username,
-        password: md5(req.body.password)
-    }
 
-    console.log(data);
+    let data = {
+        username: req.params.username,
+        password: md5(req.params.password)
+    }
 
     let params = [data.username, data.password];
 

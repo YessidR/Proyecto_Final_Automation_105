@@ -5,7 +5,7 @@ const router = express.Router();
 
 //let params = ["carlosmenacho", md5("carlosmenacho2")];
 
-router.get("/", userlogin);
+router.get("/:username/:password", userlogin);
 
 // router.get("/", (req, res) => {
 
