@@ -113,4 +113,4 @@ function insertEnrollment(data,res){
     return res;
 }
 
-module.exports = { database, insertEnrollment };
+module.exports = { database, insertEnrollment, createTables, careerTable };

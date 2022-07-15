@@ -1,35 +1,44 @@
-// Create express app
-const express = require("express");
+const http = require('http');
+const express = require('express');
 const app = express();
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path')
+
+// Configurar servidor app
+app.engine('html', require('ejs').renderFile);
+app.set("view engine", "html");
+app.set("views", path.join(__dirname, ""));
+app.use(express.urlencoded({extended:false}));
+
 const enrollmentRouter = require("./routes/student");
-<<<<<<< HEAD
-// const createDBQuery = require('./config/databaseManager') // (Yessid - Presenta error la conexion a db)
-=======
->>>>>>> eede30d89b1fee4301b3b5004f9b05bae92c449e
-// Server port
-const HTTP_PORT = 8000;
+
+
+const { createTables } = require('./config/databaseManager')
+
+createTables()
+
+// // Server port
+const HTTP_PORT = 8001;
+
 // Start server
 app.listen(HTTP_PORT, () => {
     console.log(`Server running on port ${HTTP_PORT}`)
 });
 
-<<<<<<< HEAD
-// // Create Enrollment DB // (Yessid - Presenta error la conexion a db)
-// db.run(createDBQuery, err => {
-// 	if (err) {
-// 		return console.error(err.message);
-// 	}else{
-// 		console.log("Table Enrollment created successfully")
-//         console.log("The route is: " + db_name)
-//         console.log("")
-// 	}
-// })
+app.use("/enrollment", enrollmentRouter); //
 
-=======
->>>>>>> eede30d89b1fee4301b3b5004f9b05bae92c449e
-app.use("/enrollment", enrollmentRouter);
 
-// Default response for any other request
-app.use(function(req, res){
-    res.status(404);
-});
+// console.log(`la direccion es ${path.join(__dirname)}`)
+// app.use(express.static(__dirname));
+// // app.use(express.static(__dirname+"../UI/html"));
+
+
+// app.get('/asd'), (req, res) => {
+//     res.render('../UI/html/index')
+// }
+
+// app.get('/'), (req, res) => {
+//     res.render('index.html')
+// }
+
+
