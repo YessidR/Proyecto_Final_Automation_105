@@ -141,8 +141,26 @@ CREATE TABLE Enrollment (
 `
     );
 }
+
+function studentEnrollment(data){
+    let query = "INSERT INTO Enrollment (validation_date, date) VALUES (?, ?)"
+    database.run(query, [data.validation_date, data.date], function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": data,
+            "id" : this.lastID
+        });
+    })
+}
+
+/*
 function insertTable(tableName,values) {
     let stmt = database.prepare('INSERT INTO ' + tableName +  ' VALUES (' + values + ')');
         stmt.finalize();
 }
+*/
 module.exports = { database, insertTable };
