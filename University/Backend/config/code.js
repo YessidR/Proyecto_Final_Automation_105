@@ -18,9 +18,9 @@ function insertCode(data,res){
     return res;
 }
 
-// Select row from Teacher table using id_teacher
+// Select row from Code table using id_code
 function getCodeById(codeId, res){
-    let query = "SELECT * FROM Subject WHERE id_subject = ?"
+    let query = "SELECT * FROM Code WHERE id_code = ?"
     database.get(query, codeId, (err,data)=>{
         if (err){
             res.status(400).json({"error": err.message})
