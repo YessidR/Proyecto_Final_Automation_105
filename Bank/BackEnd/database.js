@@ -25,13 +25,30 @@ function createNewDb() {
         db = newDb;
 
         const sqlCreateTables = fs.readFileSync("./Databases/CreateTables.sql").toString().split(";");
+        const sqlPopulateTables = fs.readFileSync("./Databases/PopulateTables.sql").toString().split(";");
         
         db.serialize(() => {
             db.run("BEGIN TRANSACTION;");
 
-            sqlCreateTables.forEach((query) => {
-                if (query)
-                    db.run(query + ";", (err) => {
+            sqlCreateTables.forEach((table) => {
+                if (table)
+                    db.run(table + ";", (err) => {
+                        if (err) {
+                            console.error(err.message);
+                            throw err;
+                        }
+                    });                
+            });
+
+            db.run("COMMIT;");
+        });
+
+        db.serialize(() => {
+            db.run("BEGIN TRANSACTION;");
+
+            sqlPopulateTables.forEach((insert) => {
+                if (insert)
+                    db.run(insert + ";", (err) => {
                         if (err) {
                             console.error(err.message);
                             throw err;

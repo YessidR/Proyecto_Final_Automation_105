@@ -3,7 +3,7 @@ const http = require("http");
 const db = require("./database.js");
 const paymentenrollement = require("./endpoints/routes/payment")
 const login = require("./endpoints/routes/user")
-// const tellers = require("./api/v1/tellers");
+const userlogin = require("./endpoints/routes/userlogin");
 
 const app = express();
 const server = http.createServer(app);
@@ -22,7 +22,7 @@ app.use("/login", login)
 
 app.use("/paymentenrollement", paymentenrollement)
 
-// app.use("/tellers", tellers);
+app.use("/userlogin", userlogin);
 
 app.use((req, res) => {
     res.status(404);
