@@ -75,7 +75,7 @@ li:hover a{
   background-color: #EBDCB2;
 }
 
-.header-text{
+.header{
   padding: 90px;
   
   color: black;
@@ -115,39 +115,36 @@ table{
   border-collapse: collapse;
   
 }
-thead th:nth-child(1) {
+thead td:nth-child(1) {
   width: 30%;
 }
 
-thead th:nth-child(2) {
+thead td:nth-child(2) {
   width: 20%;
 }
 
-thead th:nth-child(3) {
+thead td:nth-child(3) {
   width: 15%;
 }
 
-thead th:nth-child(4) {
+thead td:nth-child(4) {
   width: 35%;
 }
 
-th {
+td {
   padding: 2%;
   letter-spacing: 3px;
 }
 
 
-tfoot th {
+tfoot td {
   text-align: right;
 }
 
-tbody tr:nth-child(odd) {
-  background-color: #d6c28a;
+tbody tr:nth-child(1) {
+  background-color: #8b7e57;
 }
 
-tbody tr:nth-child(even) {
-  background-color: #EBDCB2;
-}
 
 
 

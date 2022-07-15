@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Side Navigation Bar</title>
+	<title>Status page</title>
 	<link rel="stylesheet" href="../css/status_style.css">
 	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 </head>
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="main_content">
-            <div class="header">Welcome back NAME!.</div>  
+            <div class="header-text">Welcome back NAME!</div>  
             <div class="info">
                 <div class="img-area">
                     <img class="img-debit" src="../imgs/creditCard.png" alt="Italian">
@@ -36,25 +36,25 @@
                     <table>
                         <tr>
                             <th>Credit limit</th>
-                            <th>463213</th>
+                            <th id="limit-value">463213</th>
                         </tr>
                         <tr>
                             <th>Credit used</th>
-                            <th>68451</th>
+                            <th id="used-value">68451</th>
                         </tr>
                         <tr>
                             <th>Currency</th>
-                            <th>USD</th>
+                            <th id="currency-value">USD</th>
                         </tr>
                         <tr>
                             <th>Status</th>
-                            <th>Active</th>
+                            <th id="status-value">Active</th>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
+    <script src="../js/status.js"></script>
 </body>
 </html>
