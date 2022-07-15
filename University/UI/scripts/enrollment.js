@@ -122,3 +122,6 @@ function setSubjects () {
     }
     return enrolledsubjects
 }
+
+
+console.log(typeof(getCodeIndexes()))

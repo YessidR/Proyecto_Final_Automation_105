@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const db = require("../database.js");
+const db = require("../../database.js");
 
 const pay = {
 
@@ -8,7 +8,6 @@ const pay = {
     Amount: "50",
     Type: "ahorros",
     Details: "pago virtual",
-
 }
 
 const apppayment = () => {

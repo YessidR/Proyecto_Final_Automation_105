@@ -6,6 +6,7 @@ let attemps = 3;
 
 
 function validation() {
+    //add a username validation
     if(attemps > 0){
         if (nameAccount.value.includes("@")){ 
             if (nameAccount.value =="hol@" && password.value=="carlos"){
