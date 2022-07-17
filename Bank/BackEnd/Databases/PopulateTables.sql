@@ -1,6 +1,6 @@
 INSERT INTO Teller (Name, LastName, Username, Password) VALUES ("admin", "admin", "admin", "21232f297a57a5a743894a0e4a801fc3");
-INSERT INTO Teller (Name, LastName, Username, Password) VALUES ("Alan", "Brito", "alanbrito", "e420c33ec3207e1f3609bc8f8edb992b");
-INSERT INTO Teller (Name, LastName, Username, Password) VALUES ("Elena", "Nito", "elenanito", "938a5ae9f9c44aa4c4df3742f7d42841");
+INSERT INTO Teller (Name, LastName, Username, Password) VALUES ("Alan", "Brito", "alanbrito", "5197fa8c58e31c41a21a4e7c855ad880");
+INSERT INTO Teller (Name, LastName, Username, Password) VALUES ("Elena", "Nito", "elenanito", "a50d2fb86de7f6c736cd4c718823d526");
 INSERT INTO User (Name, LastName, Username, Password, Email) VALUES ("Carlos", "Menacho", "carlosmenacho", "d489db2778f4b0fda1fb77bdc982fb67", "carlosmenacho@jalasoft.com");
 INSERT INTO User (Name, LastName, Username, Password, Email) VALUES ("Jhimi", "Vargas", "jhimivargas", "9f33a3f7164e4f6d5e7e699385b0a4b6", "jhimivargas@jalasoft.com");
 INSERT INTO User (Name, LastName, Username, Password, Email) VALUES ("Juan Pablo", "von Landwüst", "juanpavon", "8db21c7ba3b572a7043a220582b2163a", "juanpavon@jalasoft.com");

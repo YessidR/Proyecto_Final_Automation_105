@@ -1,8 +1,8 @@
 const md5 = require("md5");
-const db = require("../../database.js");
+const db = require("../../database");
 
-const users = (req, res, next) => {
-    const query = "SELECT * FROM User";
+const tellers = (req, res, next) => {
+    const query = "SELECT * FROM Teller";
    
     db.all(query, (err, rows) => {
         if (err) {
@@ -14,9 +14,9 @@ const users = (req, res, next) => {
             data: rows
         });
     });
-}; // users
+}; // tellers
 
-const userLogin = (req, res, next) => {
+const tellerLogin = (req, res, next) => {
     const errors = [];
 
     if (!req.body.username)
@@ -33,9 +33,9 @@ const userLogin = (req, res, next) => {
         username: req.body.username,
         password : md5(req.body.password)
     };
-    const query = "SELECT ID FROM User WHERE Username = ? AND Password = ?";
+    const query = "SELECT ID FROM Teller WHERE Username = ? AND Password = ?";
     const params = [data.username, data.password];
-
+    
     db.get(query, params, (err, row) => {
         if (err) {
             res.status(400).json({error: err.message});
@@ -46,9 +46,9 @@ const userLogin = (req, res, next) => {
             data: row
         });
     });
-}; // userLogin
+}; // tellerLogin
 
-const userLogin2 = (req, res, next) => {
+const tellerLogin2 = (req, res, next) => {
     const errors = [];
 
     if (!req.params.username)
@@ -65,7 +65,7 @@ const userLogin2 = (req, res, next) => {
         password: md5(req.params.password)
     };
     const params = [data.username, data.password];
-    const query = "SELECT ID FROM User WHERE Username = ? AND Password = ?";
+    const query = "SELECT ID FROM Teller WHERE Username = ? AND Password = ?";
 
     db.get(query, params, (err, row) => {
         if (err) {
@@ -77,10 +77,10 @@ const userLogin2 = (req, res, next) => {
             data: row
         });
     });
-}; // userLogin2
+}; // tellerLogin2
 
-const user = (req, res, next) => {
-    const query = "SELECT * FROM User WHERE ID = ?"
+const teller = (req, res, next) => {
+    const query = "SELECT * FROM Teller WHERE ID = ?"
     const params = [req.params.id];
     
     db.get(query, params, (err, row) => {
@@ -93,9 +93,9 @@ const user = (req, res, next) => {
             data: row
         });
     });
-}; // user
+}; // teller
 
-const userPost = (req, res, next) => {
+const tellerPost = (req, res, next) => {
     const errors = [];
 
     if (!req.body.name)
@@ -106,8 +106,6 @@ const userPost = (req, res, next) => {
         errors.push("No username specified");
     if (!req.body.password)
         errors.push("No password specified");
-    if (!req.body.email)
-        errors.push("No email specified");
     if (errors.length) {
         res.status(400).json({error: `${errors.join(", ")}.`});
         return;
@@ -118,11 +116,10 @@ const userPost = (req, res, next) => {
         lastname: req.body.lastname,
         username: req.body.username,
         password : md5(req.body.password),
-        email: req.body.email
     };
-    const query = 'INSERT INTO User (Name, Lastname, Username, Password, Email) VALUES (?, ?, ?, ?, ?)';
-    const params = [data.name, data.lastname, data.username, data.password, data.email];
-
+    const query = 'INSERT INTO Teller (Name, Lastname, Username, Password) VALUES (?, ?, ?, ?)';
+    const params = [data.name, data.lastname, data.username, data.password];
+    
     db.run(query, params, function (err, result) {
         if (err) {
             res.status(400).json({error: err.message});
@@ -134,19 +131,18 @@ const userPost = (req, res, next) => {
             id : this.lastID
         });
     });
-}; // userPost
+}; // tellerPost
 
-const userPatch = (req, res, next) => {
+const tellerPatch = (req, res, next) => {
     const data = {
         name: req.body.name,
         lastname: req.body.lastname,
         username: req.body.username,
         password : req.body.password ? md5(req.body.password) : null,
-        email: req.body.email
     };
-    const query = "UPDATE User SET Name = coalesce(?, Name), Lastname = coalesce(?, Lastname), Username = coalesce(?, Username), Password = coalesce(?, Password), Email = coalesce(?, Email) WHERE ID = ?";
-    const params = [data.name, data.lastname, data.username, data.password, data.email, req.params.id];
-    
+    const query = "UPDATE Teller SET Name = coalesce(?, Name), Lastname = coalesce(?, Lastname), Username = coalesce(?, Username), Password = coalesce(?, Password) WHERE ID = ?";
+    const params = [data.name, data.lastname, data.username, data.password, req.params.id];
+    console.log(params)
     db.run(query, params, function (err, result) {
             if (err) {
                 res.status(400).json({error: res.message})
@@ -158,10 +154,10 @@ const userPatch = (req, res, next) => {
                 changes: this.changes
             });
     });
-}; // userPatch
+}; // tellerPatch
 
-const userDelete = (req, res, next) => {
-    const query = "DELETE FROM User WHERE ID = ?";
+const tellerDelete = (req, res, next) => {
+    const query = "DELETE FROM Teller WHERE ID = ?";
     const params = [req.params.id];
 
     db.run(query, params, function (err, result) {
@@ -174,6 +170,7 @@ const userDelete = (req, res, next) => {
                 changes: this.changes
             });
     });
-}; // userDelete
+}; // tellerDelete
 
-module.exports = {users, userLogin, userLogin2, user, userPost, userPatch, userDelete};
+module.exports = {tellers, tellerLogin, tellerLogin2, teller, tellerPost, tellerPatch, tellerDelete};
+

@@ -1,8 +1,8 @@
 const md5 = require("md5");
 const db = require("../../database.js");
 
-const users = (req, res, next) => {
-    const query = "SELECT * FROM User";
+const universities = (req, res, next) => {
+    const query = "SELECT * FROM University";
    
     db.all(query, (err, rows) => {
         if (err) {
@@ -14,9 +14,9 @@ const users = (req, res, next) => {
             data: rows
         });
     });
-}; // users
+}; // universities
 
-const userLogin = (req, res, next) => {
+const universityLogin = (req, res, next) => {
     const errors = [];
 
     if (!req.body.username)
@@ -33,7 +33,7 @@ const userLogin = (req, res, next) => {
         username: req.body.username,
         password : md5(req.body.password)
     };
-    const query = "SELECT ID FROM User WHERE Username = ? AND Password = ?";
+    const query = "SELECT ID FROM University WHERE Username = ? AND Password = ?";
     const params = [data.username, data.password];
 
     db.get(query, params, (err, row) => {
@@ -46,9 +46,9 @@ const userLogin = (req, res, next) => {
             data: row
         });
     });
-}; // userLogin
+}; // universityLogin
 
-const userLogin2 = (req, res, next) => {
+const universityLogin2 = (req, res, next) => {
     const errors = [];
 
     if (!req.params.username)
@@ -65,7 +65,7 @@ const userLogin2 = (req, res, next) => {
         password: md5(req.params.password)
     };
     const params = [data.username, data.password];
-    const query = "SELECT ID FROM User WHERE Username = ? AND Password = ?";
+    const query = "SELECT ID FROM University WHERE Username = ? AND Password = ?";
 
     db.get(query, params, (err, row) => {
         if (err) {
@@ -77,10 +77,10 @@ const userLogin2 = (req, res, next) => {
             data: row
         });
     });
-}; // userLogin2
+}; // universityLogin2
 
-const user = (req, res, next) => {
-    const query = "SELECT * FROM User WHERE ID = ?"
+const university = (req, res, next) => {
+    const query = "SELECT * FROM University WHERE ID = ?"
     const params = [req.params.id];
     
     db.get(query, params, (err, row) => {
@@ -93,15 +93,15 @@ const user = (req, res, next) => {
             data: row
         });
     });
-}; // user
+}; // University
 
-const userPost = (req, res, next) => {
+const universityPost = (req, res, next) => {
     const errors = [];
 
     if (!req.body.name)
         errors.push("No name specified");
-    if (!req.body.lastname)
-        errors.push("No lastname specified");
+    if (!req.body.depositamount)
+        errors.push("No depositamount specified");
     if (!req.body.username)
         errors.push("No username specified");
     if (!req.body.password)
@@ -115,13 +115,13 @@ const userPost = (req, res, next) => {
 
     const data = {
         name: req.body.name,
-        lastname: req.body.lastname,
+        depositamount: req.body.depositamount,
         username: req.body.username,
         password : md5(req.body.password),
         email: req.body.email
     };
-    const query = 'INSERT INTO User (Name, Lastname, Username, Password, Email) VALUES (?, ?, ?, ?, ?)';
-    const params = [data.name, data.lastname, data.username, data.password, data.email];
+    const query = 'INSERT INTO University (Name, DepositAmount, Username, Password, Email) VALUES (?, ?, ?, ?, ?)';
+    const params = [data.name, data.depositamount, data.username, data.password, data.email];
 
     db.run(query, params, function (err, result) {
         if (err) {
@@ -134,18 +134,18 @@ const userPost = (req, res, next) => {
             id : this.lastID
         });
     });
-}; // userPost
+}; // universityPost
 
-const userPatch = (req, res, next) => {
+const universityPatch = (req, res, next) => {
     const data = {
         name: req.body.name,
-        lastname: req.body.lastname,
+        depositamount: req.body.depositamount,
         username: req.body.username,
         password : req.body.password ? md5(req.body.password) : null,
         email: req.body.email
     };
-    const query = "UPDATE User SET Name = coalesce(?, Name), Lastname = coalesce(?, Lastname), Username = coalesce(?, Username), Password = coalesce(?, Password), Email = coalesce(?, Email) WHERE ID = ?";
-    const params = [data.name, data.lastname, data.username, data.password, data.email, req.params.id];
+    const query = "UPDATE University SET Name = coalesce(?, Name), DepositAmount = coalesce(?, DepositAmount), Username = coalesce(?, Username), Password = coalesce(?, Password), Email = coalesce(?, Email) WHERE ID = ?";
+    const params = [data.name, data.depositamount, data.username, data.password, data.email, req.params.id];
     
     db.run(query, params, function (err, result) {
             if (err) {
@@ -158,10 +158,10 @@ const userPatch = (req, res, next) => {
                 changes: this.changes
             });
     });
-}; // userPatch
+}; // universityPatch
 
-const userDelete = (req, res, next) => {
-    const query = "DELETE FROM User WHERE ID = ?";
+const universityDelete = (req, res, next) => {
+    const query = "DELETE FROM University WHERE ID = ?";
     const params = [req.params.id];
 
     db.run(query, params, function (err, result) {
@@ -174,6 +174,6 @@ const userDelete = (req, res, next) => {
                 changes: this.changes
             });
     });
-}; // userDelete
+}; // UniversityDelete
 
-module.exports = {users, userLogin, userLogin2, user, userPost, userPatch, userDelete};
+module.exports = {universities, universityLogin, universityLogin2, university, universityPost, universityPatch, universityDelete};
