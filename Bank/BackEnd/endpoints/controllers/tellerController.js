@@ -117,7 +117,7 @@ const tellerPost = (req, res, next) => {
         username: req.body.username,
         password : md5(req.body.password),
     };
-    const query = 'INSERT INTO Teller (Name, Lastname, Username, Password) VALUES (?, ?, ?, ?)';
+    const query = "INSERT INTO Teller (Name, Lastname, Username, Password) VALUES (?, ?, ?, ?)";
     const params = [data.name, data.lastname, data.username, data.password];
     
     db.run(query, params, function (err, result) {
@@ -173,4 +173,3 @@ const tellerDelete = (req, res, next) => {
 }; // tellerDelete
 
 module.exports = {tellers, tellerLogin, tellerLogin2, teller, tellerPost, tellerPatch, tellerDelete};
-
