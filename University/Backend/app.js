@@ -8,6 +8,7 @@ const corsOptions ={
    credentials:true,            //access-control-allow-credentials:true
    optionSuccessStatus:200,
 }
+const bodyParser = require('body-parser');
 
 // Server port
 const HTTP_PORT = 8000;
@@ -17,6 +18,8 @@ app.listen(HTTP_PORT, () => {
 });
 
 app.use(cors(corsOptions))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use("/enrollment", enrollmentRouter);
 
 // Default response for any other request

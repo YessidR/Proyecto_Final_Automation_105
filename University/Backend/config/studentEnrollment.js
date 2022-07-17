@@ -1,8 +1,8 @@
 const { database } = require('./databaseManager');
 
-const getStudentEnrollmentById = (studentId, res) => { 
+const getStudentEnrollmentById = (semesterId, res) => { 
     let query = "SELECT * FROM Semester WHERE id_semester = ?"
-    database.get(query, studentId, (err, data) => {
+    database.get(query, semesterId, (err, data) => {
         if (err) {
           res.status(400).json({"error":err.message});
           return;
@@ -43,7 +43,7 @@ const insertStudentEnrollment = (data, res) => {
     })
 }
 
-const deleteStudent = (studentId, res) => {
+const deleteStudentEnrollment = (studentId, res) => {
     database.run(
         'DELETE FROM Semester WHERE id_semester = ?',
         studentId,
@@ -56,4 +56,4 @@ const deleteStudent = (studentId, res) => {
     });
 }
 
-module.exports = { getAllStudentEnrollment, getStudentEnrollmentById, insertStudentEnrollment, deleteStudent }
+module.exports = { getAllStudentEnrollment, getStudentEnrollmentById, insertStudentEnrollment, deleteStudentEnrollment }

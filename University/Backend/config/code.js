@@ -2,8 +2,8 @@ const { database } = require('./databaseManager');
 
 // Insert data json into code table
 function insertCode(data,res){
-    let query = "INSERT INTO Code (code) VALUES (?)"
-    database.run(query, [data.code], function (err, result) {
+    let query = "INSERT INTO Code (code1, code2, code3, code4, code5) VALUES (?, ?, ?, ?, ?)"
+    database.run(query, [data.code1, data.code2, data.code3, data.code4, data.code5], function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
             return;
@@ -42,7 +42,7 @@ function getCodeById(codeId, res){
         }
         res.json({
             "message": "success",
-            "data": codeId,
+            "data": data,
             "id" : this.lastID
         })
     });
