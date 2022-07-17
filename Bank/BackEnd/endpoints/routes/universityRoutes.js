@@ -3,12 +3,12 @@ const universityController = require("../controllers/universityController");
 
 const router = express.Router();
 
-router.get("/s", universityController.users);
-router.get("/login", universityController.userLogin);
-router.get("/login/:username/:password", universityController.userLogin2);
-router.get("/:id", universityController.user);
-router.post("/", universityController.userPost);
-router.patch("/:id", universityController.userPatch);
-router.delete("/:id", universityController.userDelete);
+router.get("/s", universityController.universities);
+router.get("/login", universityController.universityLogin);
+router.get("/login/:username/:password", universityController.universityLogin2);
+router.get("/:id", universityController.university);
+router.post("/", universityController.universityPost);
+router.patch("/:id", universityController.universityPatch);
+router.delete("/:id", universityController.universityDelete);
 
 module.exports = router;

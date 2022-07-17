@@ -43,7 +43,7 @@ const userLogin = (req, res, next) => {
         }
         res.status(200).json({
             message: "Success",
-            id: row
+            data: row
         });
     });
 }; // userLogin
@@ -74,7 +74,7 @@ const userLogin2 = (req, res, next) => {
         }
         res.status(200).json({
             message: "Success",
-            id: row
+            data: row
         });
     });
 }; // userLogin2
