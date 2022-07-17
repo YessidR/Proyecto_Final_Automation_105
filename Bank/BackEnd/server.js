@@ -3,6 +3,7 @@ const cors = require("cors");
 const express = require("express");
 const http = require("http");
 
+const universityRouter = require("./endpoints/routes/universityRoutes");
 const userRouter = require("./endpoints/routes/userRoutes");
 const paymentenrollement = require("./endpoints/routes/payment");
 
@@ -29,6 +30,7 @@ app.get("/", (req, res, next) => {
     res.json({"Message": "200: OK"});
 });
 
+app.use("/university", universityRouter);
 app.use("/user", userRouter);
 
 app.use("/paymentenrollement", paymentenrollement);
