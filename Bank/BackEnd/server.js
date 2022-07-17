@@ -3,6 +3,8 @@ const cors = require("cors");
 const express = require("express");
 const http = require("http");
 
+const busAccRouter = require("./endpoints/routes/busAccRoutes");
+const usrAccRouter = require("./endpoints/routes/usrAccRoutes");
 const tellerRouter = require("./endpoints/routes/tellerRoutes");
 const universityRouter = require("./endpoints/routes/universityRoutes");
 const userRouter = require("./endpoints/routes/userRoutes");
@@ -31,6 +33,8 @@ app.get("/", (req, res, next) => {
     res.json({"Message": "200: OK"});
 });
 
+app.use("/busacc", busAccRouter);
+app.use("/usracc", usrAccRouter);
 app.use("/teller", tellerRouter);
 app.use("/university", universityRouter);
 app.use("/user", userRouter);
