@@ -3,7 +3,7 @@ const { database } = require('./databaseManager');
 // Insert data json into Teacher table
 function insertTeacher(data,res){
     let query = "INSERT INTO Teacher (first_name, last_name) VALUES (?,?)"
-    database.run(query, [data], function (err, result) {
+    database.run(query, [data.first_name, data.last_name], function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
             return;
@@ -57,7 +57,7 @@ function getTeacherById(teacherId, res){
         }
         res.json({
             "message": "success",
-            "data": teacherId,
+            "data": data,
             "id" : this.lastID
         });
     });

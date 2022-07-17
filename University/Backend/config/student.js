@@ -2,8 +2,8 @@ const { database } = require('./databaseManager');
 
 // Insert data json into Student table
 function insertStudent(data,res){
-    let query = "INSERT INTO Student (first_name, last_name, phone, username, password, id_enrollment, id_code) VALUES (?,?,?,?,?,?,?)"
-    database.run(query, [data], function (err, result) {
+    let query = "INSERT INTO Student (first_name, last_name, phone, username, password, status, id_enrollment, id_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    database.run(query, [data.first_name, data.last_name, data.phone, data.username, data.password, data.status,data.id_enrollment, data.id_code], function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
             return;
@@ -57,7 +57,7 @@ function getStudentById(studentId, res){
         }
         res.json({
             "message": "success",
-            "data": studentId,
+            "data": data,
             "id" : this.lastID
         });
     });
