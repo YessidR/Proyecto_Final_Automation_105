@@ -68,8 +68,6 @@ const transactionPost = (req, res, next) => {
         errors.push("No transactionnumber specified");
     if (!req.body.studentcode)
         errors.push("No studentcode specified");
-    if (!req.body.datetime)
-        errors.push("No datetime specified");
     if (!req.body.amount)
         errors.push("No amount specified");
     if (!req.body.universityaccountid)
@@ -84,7 +82,7 @@ const transactionPost = (req, res, next) => {
     const data = {
         transactionnumber: req.body.transactionnumber,
         studentcode: req.body.studentcode,
-        datetime: req.body.datetime,
+        datetime: Date(),
         amount: req.body.amount,
         details : req.body.details,
         universityaccountid: req.body.universityaccountid,
