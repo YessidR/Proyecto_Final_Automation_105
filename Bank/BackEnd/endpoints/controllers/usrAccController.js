@@ -46,7 +46,7 @@ const accountNumber = (req, res, next) => {
     const data = {
         accountnumber: req.body.accountnumber,
     };
-    const query = "SELECT * FROM PersonalAccount WHERE Number = ? ";
+    const query = "SELECT * FROM PersonalAccount WHERE Number = ?";
     const params = [data.accountnumber];
 
     db.get(query, params, (err, row) => {
@@ -89,7 +89,8 @@ const accountPost = (req, res, next) => {
         status: req.body.status,
         userid: req.body.userid
     };
-    const query = "INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES (?, ?, ?, ?, ?, ?)";
+    const query = `INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) 
+                    VALUES (?, ?, ?, ?, ?, ?)`;
     const params = [data.number, data.balance, data.currency, data.type, data.status, data.userid];
 
     db.run(query, params, function (err, result) {
@@ -113,7 +114,9 @@ const accountPatch = (req, res, next) => {
         type : req.body.type,
         status: req.body.status,
     };
-    const query = "UPDATE PersonalAccount SET number = coalesce(?, number), balance = coalesce(?, balance), currency = coalesce(?, currency), type = coalesce(?, type), status = coalesce(?, status) WHERE ID = ?";
+    const query = `UPDATE PersonalAccount SET Number = coalesce(?, Number), Balance = coalesce(?, Balance), 
+                    Currency = coalesce(?, Currency), Type = coalesce(?, Type), Status = coalesce(?, Status) 
+                    WHERE ID = ?`;
     const params = [data.number, data.balance, data.currency, data.type, data.status, req.params.id];
     
     db.run(query, params, function (err, result) {

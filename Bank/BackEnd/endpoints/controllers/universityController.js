@@ -3,8 +3,9 @@ const db = require("../../database");
 
 const universities = (req, res, next) => {
     const query = "SELECT * FROM University";
+    const params = [];
    
-    db.all(query, (err, rows) => {
+    db.all(query, params, (err, rows) => {
         if (err) {
             res.status(400).json({error: err.message});
             return;
