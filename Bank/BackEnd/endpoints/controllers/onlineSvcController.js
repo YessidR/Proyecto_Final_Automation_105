@@ -147,4 +147,8 @@ const transactionDelete = (req, res, next) => {
     });
 }; // transactionDelete
 
+function getDepositAmount(universityId) {
+
+} // getDepositAmount()
+
 module.exports = {transactions, transactionId, transactionStudentCode, transactionPost, transactionPatch, transactionDelete};
