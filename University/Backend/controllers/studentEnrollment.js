@@ -1,18 +1,16 @@
-//const { getStudentEnrollmentById } = require('../config/database')
-const { insertEnrollment } = require('../config/databaseManager')
 const { getAllStudentEnrollment, 
     getStudentEnrollmentById, 
     insertStudentEnrollment, 
-    deleteStudent} = require('../config/studentEnrollment')
+    deleteStudentEnrollment} = require('../config/studentEnrollment')
 
 
-const studentEnrollment  = async (req, res, next) => {
+const postStudentEnrollment  = async (req, res, next) => {
     let data = {
-        "start_date": Date(),
-        "end_date": Date(),
-        "number": 1,
-        "id_subject": 1,
-        "id_student": 1,
+        "start_date": req.body.start_date,
+        "end_date": req.body.end_date,
+        "number": req.body.number,
+        "id_subject": req.body.id_subject,
+        "id_student": req.body.id_student,
     }
     insertStudentEnrollment(data, res)
 }
@@ -26,7 +24,7 @@ const getAllStudentEnrollments = async(req, res, next) => {
 }
 
 const deleteStudents = (req, res, next) => {
-    deleteStudent(req.params.id, res)
+    deleteStudentEnrollment(req.params.id, res)
 }
 
-module.exports = { studentEnrollment, getEnrollment, deleteStudents, getAllStudentEnrollments};
+module.exports = { postStudentEnrollment, getEnrollment, deleteStudents, getAllStudentEnrollments};

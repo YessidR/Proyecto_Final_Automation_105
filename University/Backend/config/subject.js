@@ -1,8 +1,8 @@
 const { database } = require('./databaseManager');
 
 const insertSubject = (data, res) => {
-    let query = "INSERT INTO Enrollment (name, id_teacher) VALUES (?, ?)"
-    database.run(query, [data.name, data.id_teacher], function (err, result) {
+    let query = "INSERT INTO Subject (name, id_teacher, id_career) VALUES (?, ?, ?)"
+    database.run(query, [data.name, data.id_teacher, data.id_career], function (err, result) {
         if (err){
             res.status(400).json({"error": err.message})
             return;

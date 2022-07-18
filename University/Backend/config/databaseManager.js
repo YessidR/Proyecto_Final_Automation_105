@@ -29,7 +29,7 @@ const semesterTable = `CREATE TABLE IF NOT EXISTS Semester (
     start_date  DATE    NOT NULL,
     end_date    DATE    NOT NULL,
     number      INTEGER NOT NULL,
-    id_subject  INTEGER REFERENCES Subject (id_subject) 
+    id_subject  TEXT    REFERENCES Subject (id_subject) 
                         NOT NULL,
     id_student  INTEGER REFERENCES Student (id_student) 
                         NOT NULL
@@ -41,7 +41,8 @@ const subjectTable = `CREATE TABLE IF NOT EXISTS Subject (
                        NOT NULL,
     name       TEXT    NOT NULL,
     id_teacher INTEGER REFERENCES Teacher (id_teacher) 
-                       NOT NULL
+                       NOT NULL,
+    id_career  INTEGER REFERENCES Career (id_career) 
 );
 `
 
@@ -62,6 +63,7 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
     username      VARCHAR UNIQUE
                           NOT NULL,
     password      VARCHAR NOT NULL,
+    status        BOOLEAN,
     id_enrollment INTEGER REFERENCES Enrollment (id_enrollment) 
                           NOT NULL,
     id_code       INTEGER REFERENCES Code (id_code) 
@@ -72,8 +74,16 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
 const codeTable = `CREATE TABLE IF NOT EXISTS Code (
     id_code INTEGER PRIMARY KEY AUTOINCREMENT
                     NOT NULL,
-    code    TEXT    NOT NULL
-                    UNIQUE
+    code1   TEXT    NOT NULL
+                    UNIQUE,
+    code2   TEXT    UNIQUE
+                    NOT NULL,
+    code3   TEXT    NOT NULL
+                    UNIQUE,
+    code4   TEXT    UNIQUE
+                    NOT NULL,
+    code5   TEXT    UNIQUE
+                    NOT NULL
 );
 `
 
