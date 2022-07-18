@@ -41,12 +41,15 @@ a {
 
 
 .header {
+    display: flex;
     position: absolute;
     left: 0%;
     right: 0%;
     top: 0%;
     bottom: 73.96%;
     background: linear-gradient(0deg, rgba(0, 32, 116, 0.46), rgba(0, 32, 116, 0.46)), #468BBD;
+    justify-content: end;
+    align-items: flex-end;
 }
 
 .home-btn {
@@ -195,4 +198,6 @@ tr:hover td{
     transition: 0.9s;
 }
 
-
+.greeting{
+    color: #D9D9D9;
+}

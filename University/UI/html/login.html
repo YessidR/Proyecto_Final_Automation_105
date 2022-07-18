@@ -10,7 +10,7 @@
 
 <body> 
 
-    <form action="../html/index.html" class="form">  <!--Nueva direccion...-->
+    <form onSubmit="return false;" class="form">  <!--Nueva direccion...-->
        
         <h2 class="form_title">UNIVERSITY</h2>
 
@@ -43,12 +43,15 @@
                 </script>
 
             </div>
+            <div class="msg">Incorrect password</div>
 
-            <input type="submit" id="boton" class="form_submit" value="Log in"> <a href="/index.html"></a> 
+            <input type="submit" id="boton" class="form_submit" value="Log in"> <!--<a href="/index.html"></a>-->
         </div>
 
 
     </form>
     <script src="../scripts/login.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </body>
 </html>
