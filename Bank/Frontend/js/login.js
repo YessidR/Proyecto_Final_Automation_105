@@ -41,6 +41,7 @@ const validation = () => {
                     location.href = "html/status.html";
                 }
                 else{
+                    downMessage.innerHTML = "Incorrect username or password";
                     console.log("no exito");
                 }
             });
