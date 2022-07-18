@@ -1,10 +1,11 @@
 const md5 = require("md5");
-const db = require("../../database.js");
+const db = require("../../database");
 
 const users = (req, res, next) => {
     const query = "SELECT * FROM User";
+    const params = [];
    
-    db.all(query, (err, rows) => {
+    db.all(query, params, (err, rows) => {
         if (err) {
             res.status(400).json({error: err.message});
             return;
@@ -120,7 +121,7 @@ const userPost = (req, res, next) => {
         password : md5(req.body.password),
         email: req.body.email
     };
-    const query = 'INSERT INTO User (Name, Lastname, Username, Password, Email) VALUES (?, ?, ?, ?, ?)';
+    const query = "INSERT INTO User (Name, Lastname, Username, Password, Email) VALUES (?, ?, ?, ?, ?)";
     const params = [data.name, data.lastname, data.username, data.password, data.email];
 
     db.run(query, params, function (err, result) {

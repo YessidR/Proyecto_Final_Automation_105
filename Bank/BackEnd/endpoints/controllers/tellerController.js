@@ -3,8 +3,9 @@ const db = require("../../database");
 
 const tellers = (req, res, next) => {
     const query = "SELECT * FROM Teller";
+    const params = [];
    
-    db.all(query, (err, rows) => {
+    db.all(query, params, (err, rows) => {
         if (err) {
             res.status(400).json({error: err.message});
             return;
@@ -117,7 +118,7 @@ const tellerPost = (req, res, next) => {
         username: req.body.username,
         password : md5(req.body.password),
     };
-    const query = 'INSERT INTO Teller (Name, Lastname, Username, Password) VALUES (?, ?, ?, ?)';
+    const query = "INSERT INTO Teller (Name, Lastname, Username, Password) VALUES (?, ?, ?, ?)";
     const params = [data.name, data.lastname, data.username, data.password];
     
     db.run(query, params, function (err, result) {
@@ -173,4 +174,3 @@ const tellerDelete = (req, res, next) => {
 }; // tellerDelete
 
 module.exports = {tellers, tellerLogin, tellerLogin2, teller, tellerPost, tellerPatch, tellerDelete};
-

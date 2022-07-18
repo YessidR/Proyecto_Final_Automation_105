@@ -6,15 +6,6 @@ CREATE TABLE IF NOT EXISTS "Teller" (
 	"Password"	TEXT NOT NULL,
 	PRIMARY KEY("ID" AUTOINCREMENT)
 );
-CREATE TABLE IF NOT EXISTS "Transactions" (
-	"ID"	INTEGER NOT NULL UNIQUE,
-	"Number"	TEXT NOT NULL UNIQUE,
-	"DateTime"	TEXT NOT NULL,
-	"Amount"	NUMERIC NOT NULL,
-	"Type"	TEXT NOT NULL,
-	"Details"	TEXT NOT NULL,
-	PRIMARY KEY("ID" AUTOINCREMENT)
-);
 CREATE TABLE IF NOT EXISTS "University" (
 	"ID"	INTEGER NOT NULL UNIQUE,
 	"Name"	TEXT NOT NULL UNIQUE,
@@ -58,29 +49,31 @@ CREATE TABLE IF NOT EXISTS "PersonalAccount" (
 	PRIMARY KEY("ID" AUTOINCREMENT),
 	FOREIGN KEY("UserID") REFERENCES "User"("ID")
 );
-CREATE TABLE IF NOT EXISTS "UniversityServiceLocal" (
+CREATE TABLE "UniversityServiceLocal" (
 	"ID"	INTEGER NOT NULL UNIQUE,
+	"TransactionNumber"	TEXT NOT NULL UNIQUE,
 	"ClientID"	TEXT NOT NULL,
 	"ClientName"	TEXT NOT NULL,
 	"StudentCode"	TEXT NOT NULL,
+	"DateTime"	TEXT NOT NULL,
+	"Amount"	NUMERIC NOT NULL,
 	"Details"	TEXT,
 	"UniversitAccountID"	INTEGER NOT NULL,
 	"TellerID"	INTEGER NOT NULL,
-	"TransactionID"	INTEGER NOT NULL,
 	PRIMARY KEY("ID" AUTOINCREMENT),
-	FOREIGN KEY("TellerID") REFERENCES "Teller"("ID"),
 	FOREIGN KEY("UniversitAccountID") REFERENCES "BussinessAccount"("ID"),
-	FOREIGN KEY("TransactionID") REFERENCES "Transaction"("ID")
+	FOREIGN KEY("TellerID") REFERENCES "Teller"("ID")
 );
-CREATE TABLE IF NOT EXISTS "UniversityServiceOnline" (
+CREATE TABLE "UniversityServiceOnline" (
 	"ID"	INTEGER NOT NULL UNIQUE,
+	"TransactionNumber"	TEXT NOT NULL UNIQUE,
 	"StudentCode"	TEXT NOT NULL,
+	"DateTime"	TEXT NOT NULL,
+	"Amount"	NUMERIC NOT NULL,
 	"Details"	TEXT,
 	"UniversityAccountID"	INTEGER NOT NULL,
 	"UserAccountID"	INTEGER NOT NULL,
-	"TransactionID"	INTEGER NOT NULL,
 	PRIMARY KEY("ID" AUTOINCREMENT),
-	FOREIGN KEY("UserAccountID") REFERENCES "PersonalAccount"("ID"),
 	FOREIGN KEY("UniversityAccountID") REFERENCES "BussinessAccount"("ID"),
-	FOREIGN KEY("TransactionID") REFERENCES "Transaction"("ID")
+	FOREIGN KEY("UserAccountID") REFERENCES "PersonalAccount"("ID")
 );
