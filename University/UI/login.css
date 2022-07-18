@@ -123,3 +123,11 @@ body{
         font-size: 1.8rem;
     }
 }
+
+.msg {
+    opacity: 0;
+}
+
+.msg.show {
+    opacity: 1;
+}
