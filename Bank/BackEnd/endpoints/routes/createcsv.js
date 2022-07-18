@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 const db = require("../../database.js")
 
-const getStudentEnrollmentById = (user, res) => {
+const getStudentEnrollmentById = (res) => {
   let query = "SELECT * FROM User "
   db.all(query, (err, data) => {
 
@@ -56,7 +56,7 @@ transport.sendMail(message,function(err){
 }
 
 router.get("/", async (req, res, next) => {
-  getStudentEnrollmentById("jhimivargas", res);
+  getStudentEnrollmentById(res);
   sendemail();
 
 });
