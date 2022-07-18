@@ -58,10 +58,10 @@ CREATE TABLE "UniversityServiceLocal" (
 	"DateTime"	TEXT NOT NULL,
 	"Amount"	NUMERIC NOT NULL,
 	"Details"	TEXT,
-	"UniversitAccountID"	INTEGER NOT NULL,
+	"UniversityAccountID"	INTEGER NOT NULL,
 	"TellerID"	INTEGER NOT NULL,
 	PRIMARY KEY("ID" AUTOINCREMENT),
-	FOREIGN KEY("UniversitAccountID") REFERENCES "BussinessAccount"("ID"),
+	FOREIGN KEY("UniversityAccountID") REFERENCES "BussinessAccount"("ID"),
 	FOREIGN KEY("TellerID") REFERENCES "Teller"("ID")
 );
 CREATE TABLE "UniversityServiceOnline" (
