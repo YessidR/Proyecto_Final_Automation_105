@@ -12,7 +12,7 @@ const corsOptions ={
 const bodyParser = require('body-parser');
 
 // Server port
-const HTTP_PORT = 8002;
+const HTTP_PORT = 8000;
 // Start server
 app.listen(HTTP_PORT, () => {
     console.log(`Server running on port ${HTTP_PORT}`)

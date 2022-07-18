@@ -1,12 +1,12 @@
 const $bodyTable = document.querySelector("#bodyTable");
 
 let student = []; 
-let currentStudent = 2;
+let currentStudent = 1;
 
 getStudentsProfilebyID();
 
 function getStudentsProfilebyID (){
-    fetch(`http://localhost:8002/profile/${currentStudent}`).then((res)=>{       
+    fetch(`http://localhost:8000/profile/${currentStudent}`).then((res)=>{       
         return res.json();
     }).then((data) => {
         student = data["data"];
@@ -26,7 +26,6 @@ function getStudentsProfilebyID (){
         $tr.appendChild($tdPhone);
 
         let $tdStatus = document.createElement("td");
-        console.log(student.status);
         student.status === 'true' ? $tdStatus.textContent = "Active": $tdStatus.textContent = "Inactive";
         $tr.appendChild($tdStatus);
 
