@@ -7,6 +7,8 @@ const tellerRouter = require("./endpoints/routes/tellerRoutes");
 const universityRouter = require("./endpoints/routes/universityRoutes");
 const userRouter = require("./endpoints/routes/userRoutes");
 const paymentenrollement = require("./endpoints/routes/payment");
+const getStudentEnrollmentPayment = require("./endpoints/routes/createcsv");
+
 
 const app = express();
 const server = http.createServer(app);
@@ -36,6 +38,7 @@ app.use("/university", universityRouter);
 app.use("/user", userRouter);
 
 app.use("/paymentenrollement", paymentenrollement);
+app.use("/getStudentEnrollmentPayment", getStudentEnrollmentPayment);
 
 app.use((req, res) => {
     res.status(404);
