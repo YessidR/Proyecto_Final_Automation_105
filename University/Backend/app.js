@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const enrollmentRouter = require("./routes/studentEnrollment");
+const authenticationRouter = require("./routes/authentication");
 const cors=require("cors");
 const corsOptions ={
    origin:'*', 
@@ -21,9 +22,11 @@ app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/enrollment", enrollmentRouter);
+app.use("/auth", authenticationRouter)
 
 // Default response for any other request
 app.use(function(req, res){
     res.status(404);
 });
+
 
