@@ -125,3 +125,23 @@ function setSubjects () {
 
 
 console.log(typeof(getCodeIndexes()))
+
+
+
+
+// YESSID //
+
+// const UI = require ("../../Backend/config/dataEnrollment.js")
+function postSomething(){
+    fetch('http://localhost:8000/bank', {
+    method: "POST",
+    // body: JSON.stringify({"id_enrollment": `${obj.id_enrollment}`,
+    // "validation_date": `${obj.validation_date}`,
+    // "date": `${obj.date}`,
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+}).then(response => response.json())
+.then(json => console.log(json))
+}
+
+postSomething()
+

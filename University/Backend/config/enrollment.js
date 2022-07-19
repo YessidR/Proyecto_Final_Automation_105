@@ -7,11 +7,11 @@ const insertEnrollment = (data, res) => {
             res.status(400).json({"error": err.message})
             return;
         }
-        // res.json({
-        //     "message": "success",
-        //     "data": data,
-        //     "id" : this.lastID
-        // });
+        res.json({
+            "message": "success",
+            "data": data,
+            "id" : this.lastID
+        });
     }) 
 }
 
@@ -71,4 +71,14 @@ const deleteEnrollment = (enrollmentId, res) => {
     });
 }
 
-module.exports = { insertEnrollment, getAllEnrollment, getEnrollmentById, deleteEnrollment, updateEnrollment }
+const newEnrollment = (data, res) => {
+    let query = "INSERT INTO Enrollment (id_enrollment, validation_date, date, code_1, code_2, code_3, code_4, code_5) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+    database.run(query, [data.id_enrollment, data.validation_date, data.date, data.code_1, data.code_2, data.code_3, data.code_4, data.code_5], function (err, result) {
+        if (err){
+            res.status(400).json({"error": err.message})
+            return;
+        }
+    }) 
+}
+
+module.exports = { insertEnrollment, getAllEnrollment, getEnrollmentById, deleteEnrollment, updateEnrollment, newEnrollment }

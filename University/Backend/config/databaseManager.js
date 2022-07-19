@@ -54,6 +54,7 @@ const teacherTable = `CREATE TABLE IF NOT EXISTS Teacher (
 );
 `
 
+// Deleted foreign keys from (id_enrollment and id_code)
 const studentTable = `CREATE TABLE IF NOT EXISTS Student (
     id_student    INTEGER PRIMARY KEY AUTOINCREMENT
                           NOT NULL,
@@ -64,10 +65,8 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
                           NOT NULL,
     password      VARCHAR NOT NULL,
     status        BOOLEAN,
-    id_enrollment INTEGER REFERENCES Enrollment (id_enrollment) 
-                          NOT NULL,
-    id_code       INTEGER REFERENCES Code (id_code) 
-                          NOT NULL
+    id_enrollment INTEGER NOT NULL,
+    id_code       INTEGER NOT NULL
 );
 `
 
@@ -87,11 +86,18 @@ const codeTable = `CREATE TABLE IF NOT EXISTS Code (
 );
 `
 
+// Edited to insert codes in this table
 const enrollmentTable = `CREATE TABLE IF NOT EXISTS Enrollment (
-    id_enrollment   INTEGER PRIMARY KEY AUTOINCREMENT
+    id   INTEGER PRIMARY KEY AUTOINCREMENT 
                          NOT NULL,
+    id_enrollment   TEXT NOT NULL,
     validation_date DATE NOT NULL,
-    date            DATE NOT NULL
+    date            DATE NOT NULL,
+    code_1          TEXT NOT NULL,
+    code_2          TEXT NOT NULL,
+    code_3          TEXT NOT NULL,
+    code_4          TEXT NOT NULL,
+    code_5          TEXT NOT NULL
 );
 `
 const createTables = () => {

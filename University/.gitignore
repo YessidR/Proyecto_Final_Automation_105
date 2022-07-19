@@ -1,2 +1,5 @@
 Backend/node_modules
-Backend/db/udb.db
+Backend/config/udb.db
+Backend/config/Test-csv.csv
+
+Backend/db

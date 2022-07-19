@@ -1,7 +1,7 @@
 const { database } = require('./databaseManager');
 
 // Open csv files...
-const path = require('path') // Genera proporciona ubicacion
+const path = require('path') // Standard location
 const CSV = require('csv-parser')
 const fs = require('fs') // File stream
 const results = []; // Store data from csv
@@ -9,7 +9,20 @@ const results = []; // Store data from csv
 const CSVSOURCE = path.resolve('../Backend/config/Test-enrollment.csv'); // csv file location
 console.log (`location is: ${CSVSOURCE}`) //To confirm the location
 
-const {insertEnrollment} = require ('./enrollment')
+
+// Logic for generating 5 random letters
+function makePass(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+// Open csv file and
+const {newEnrollment} = require ('./enrollment')
 const csv = async(req, res, next) => {
     fs.createReadStream(CSVSOURCE)
     .pipe(CSV({}))
@@ -18,30 +31,23 @@ const csv = async(req, res, next) => {
         // console.log(results)
         for (let i = 0; i < results.length; i++) {
             let obj = results[i]
-        
-            // Agregar logica para generar 5 codigos aleatoriamente 
-            // Una vez generados los 5 codigos enviar el codigo del estudiante con los 5 codigos
-            // Se loguea el estudiante y confirma los codigos...
-            // Agregar codigo del estudiante y almacenar en la base de datos.
+            
+            // Creating 5 random password
+            let code1 = makePass(5)
+            let code2 = makePass(5)
+            let code3 = makePass(5)
+            let code4 = makePass(5)
+            let code5 = makePass(5)
+ 
 
+            // if codigo existe: pass
+            // else: continue
+            newEnrollment({id_enrollment:obj.id_enrollment, validation_date:obj.validation_date, date:obj.date, code_1:code1, code_2:code2, code_3:code3, code_4:code4, code_5:code5})
 
-            insertEnrollment({validation_date:obj.validation_date, date:obj.date})
-
-            // console.log(`Objeto en posicion ${i}`, obj)
-            // queryEnrollment = `INSERT INTO Enrollment (id_enrollment, validation_date, date, id_student) VALUES (${obj.id_enrollment}, ${obj.validation_date}, ${obj.date}, ${obj.id_student})`
-            // console.log(queryEnrollment)
-            // querySelect = `UPDATE INTO Student (status) WHERE id_student = ${obj.id_student} VALUES (status = True)`
-            // console.log(querySelect)
-        //     // queryAdd = ""
         }
     }
 )};
 
-csv()
+// csv()
 
 module.exports = {csv}
-
-
-// Verificar estudiante q exista
-// Generar 5 codigos de estudiante
-// Cambiar status estudiante
