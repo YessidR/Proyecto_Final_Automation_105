@@ -2,4 +2,4 @@ Backend/node_modules
 Backend/config/udb.db
 Backend/config/Test-csv.csv
 
-Backend/db
+Backend/db/udb.db

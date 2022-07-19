@@ -65,8 +65,7 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
                           NOT NULL,
     password      VARCHAR NOT NULL,
     status        BOOLEAN,
-    id_enrollment INTEGER NOT NULL,
-    id_code       INTEGER NOT NULL
+
 );
 `
 
@@ -90,7 +89,7 @@ const codeTable = `CREATE TABLE IF NOT EXISTS Code (
 const enrollmentTable = `CREATE TABLE IF NOT EXISTS Enrollment (
     id   INTEGER PRIMARY KEY AUTOINCREMENT 
                          NOT NULL,
-    id_enrollment   TEXT NOT NULL,
+    id_student   TEXT NOT NULL,
     validation_date DATE NOT NULL,
     date            DATE NOT NULL,
     code_1          TEXT NOT NULL,

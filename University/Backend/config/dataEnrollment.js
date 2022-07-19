@@ -23,6 +23,7 @@ function makePass(length) {
 
 // Open csv file and
 const {newEnrollment} = require ('./enrollment')
+const { statusStudent } = require('./student')
 const csv = async(req, res, next) => {
     fs.createReadStream(CSVSOURCE)
     .pipe(CSV({}))
@@ -39,11 +40,10 @@ const csv = async(req, res, next) => {
             let code4 = makePass(5)
             let code5 = makePass(5)
  
+            newEnrollment({id_student:obj.id_student, validation_date:obj.validation_date, date:obj.date, code_1:code1, code_2:code2, code_3:code3, code_4:code4, code_5:code5})
 
-            // if codigo existe: pass
-            // else: continue
-            newEnrollment({id_enrollment:obj.id_enrollment, validation_date:obj.validation_date, date:obj.date, code_1:code1, code_2:code2, code_3:code3, code_4:code4, code_5:code5})
-
+            statusStudent({id_student:obj.id_student})
+            
         }
     }
 )};

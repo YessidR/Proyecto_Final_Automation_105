@@ -63,4 +63,15 @@ function getStudentById(studentId, res){
     });
 }
 
-module.exports = { insertStudent, deleteStudent, getStudentById, getAllStudent};
+const statusStudent = (data, res) => { 
+    let query = "UPDATE Student set status = 1 WHERE id_student = ?";
+    database.all(query, data.id_student, (err, result) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+
+      });
+}
+
+module.exports = { insertStudent, deleteStudent, getStudentById, getAllStudent, statusStudent};
