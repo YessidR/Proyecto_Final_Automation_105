@@ -69,7 +69,7 @@ function checkCodes() {
     let codes = localStorage.getItem('codes').split(",")
     
     if ((codeElement1.value).toUpperCase() == codes[(code1-1)] && (codeElement2.value).toUpperCase() == codes[(code2-1)]) {
-        alert("all good")
+        swal("Looks good!")
         console.log("nice")
 
         //need to push this to db
@@ -79,7 +79,7 @@ function checkCodes() {
         });
         hideModal()
     } else {
-        alert("oops, wrong codes")
+        swal("Oops, wrong codes!")
         //console.log(`code 1 is ${codeElement1.value} and it should say ${codes[(code1-1)]}`)
         //console.log(`code 2 is ${codeElement2.value} and it should say ${codes[(code2-1)]}`)
     }
@@ -115,9 +115,9 @@ function setSubjects () {
             enrolledsubjects.push(checkedSubjectElem.textContent)
 
         });
-        alert(`You have successfully enrolled in ${enrolledsubjects.join(". ")}`)
+        swal("", `You have successfully enrolled in ${enrolledsubjects.join(". ")}`)
     } else {
-        alert("No subjects selected!")
+        swal("","No subjects selected!", "error")
     }
     return enrolledsubjects
 }
