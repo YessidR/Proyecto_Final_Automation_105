@@ -9,7 +9,6 @@ const userPwdVal = (username, pwd) => {
     })
     .then((response) => response.json())
     .then((responseData) => {
-        
         if (responseData['data']['ID']>0){
             //console.log("user validated")
             return responseData['data']['ID'];
@@ -36,7 +35,8 @@ const validation = () => {
     if(attemps > 0){
         if(entryFieldVal(nameAccount.value, password.value)){
             userPwdVal(nameAccount.value, password.value).then((response) => {
-                if(response == true){
+                if(response > 0){
+                    localStorage.setItem('userID', response);
                     console.log("exito");
                     location.href = "html/status.html";
                 }
