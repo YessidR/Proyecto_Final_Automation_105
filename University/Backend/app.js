@@ -4,6 +4,10 @@ const app = express();
 const enrollmentRouter = require("./routes/studentEnrollment");
 const profileRouter = require("./routes/profile");
 const authenticationRouter = require("./routes/authentication");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 633dadebb57d713bcddeedf3b80092ca6b51371b
 const cors=require("cors");
 const corsOptions ={
    origin:'*', 
