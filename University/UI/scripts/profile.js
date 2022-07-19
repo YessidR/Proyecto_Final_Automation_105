@@ -1,12 +1,11 @@
 const $bodyTable = document.querySelector("#bodyTable");
-
 let student = []; 
-let currentStudent = 1;
-
+let id_user = localStorage.getItem('userId');
+console.log(id_user);
 getStudentsProfilebyID();
 
 function getStudentsProfilebyID (){
-    fetch(`http://localhost:8000/profile/${currentStudent}`).then((res)=>{       
+    fetch(`http://localhost:8000/profile/${id_user}`).then((res)=>{       
         return res.json();
     }).then((data) => {
         student = data["data"];
@@ -30,6 +29,5 @@ function getStudentsProfilebyID (){
         $tr.appendChild($tdStatus);
 
         $bodyTable.appendChild($tr);
-       
     })
 }
