@@ -13,5 +13,5 @@ INSERT INTO BussinessAccount (Number, Balance, Currency, Type, Status, Bussiness
 INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("9999-9999", 2000.00, "USD", "Savings", "Active", 1);
 INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("8888-8888", 2000.00, "USD", "Savings", "Active", 2);
 INSERT INTO PersonalAccount (Number, Balance, Currency, Type, Status, UserID) VALUES ("7777-7777", 2000.00, "USD", "Savings", "Active", 3);
-INSERT INTO UniversityServiceOnline (TransactionNumber, StudentCode, DateTime, Amount,Details, UniversityAccountID, UserAccountID) VALUES ("1", "200","Tue Jul 19 2022 15:02:06 GMT-0400 (hora de Bolivia)", 2000, "pago online", "3","pan");
-INSERT INTO UniversityServiceOnline (TransactionNumber, StudentCode, DateTime, Amount,Details, UniversityAccountID, UserAccountID) VALUES ("2","300", "Tue Jul 19 2022 15:02:14 GMT-0400 (hora de Bolivia)", 5000, "pago online", "3", "pan");
+INSERT INTO UniversityServiceOnline (TransactionNumber, StudentCode, DateTime, Amount,Details, UniversityAccountID, UserAccountID) VALUES ("10", "1","Tue Jul 19 2022 15:02:06 GMT-0400 (hora de Bolivia)", 2000, "pago online", "3","5678");
+INSERT INTO UniversityServiceOnline (TransactionNumber, StudentCode, DateTime, Amount,Details, UniversityAccountID, UserAccountID) VALUES ("20","2", "Tue Jul 19 2022 15:02:14 GMT-0400 (hora de Bolivia)", 5000, "pago online", "3", "5679");
