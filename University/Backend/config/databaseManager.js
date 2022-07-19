@@ -64,8 +64,7 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
     username      VARCHAR UNIQUE
                           NOT NULL,
     password      VARCHAR NOT NULL,
-    status        BOOLEAN,
-
+    status        BOOLEAN
 );
 `
 

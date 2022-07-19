@@ -7,7 +7,7 @@ const fs = require('fs') // File stream
 const results = []; // Store data from csv
 
 const CSVSOURCE = path.resolve('../Backend/config/Test-enrollment.csv'); // csv file location
-console.log (`location is: ${CSVSOURCE}`) //To confirm the location
+// console.log (`location is: ${CSVSOURCE}`) //To confirm the location
 
 
 // Logic for generating 5 random letters
@@ -27,7 +27,7 @@ const { statusStudent } = require('./student')
 const csv = async(req, res, next) => {
     fs.createReadStream(CSVSOURCE)
     .pipe(CSV({}))
-    .on('data', (data) => results.push(data))
+    .on('data', (data) => results.push(data)) 
     .on('end', () => {
         // console.log(results)
         for (let i = 0; i < results.length; i++) {
