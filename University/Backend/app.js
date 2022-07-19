@@ -2,7 +2,9 @@ const http = require('http');
 const express = require('express');
 const app = express();
 const enrollmentRouter = require("./routes/studentEnrollment");
+const profileRouter = require("./routes/profile");
 const authenticationRouter = require("./routes/authentication");
+
 const cors=require("cors");
 const corsOptions ={
    origin:'*', 
@@ -22,6 +24,7 @@ app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/enrollment", enrollmentRouter);
+app.use("/profile", profileRouter);
 app.use("/auth", authenticationRouter)
 
 

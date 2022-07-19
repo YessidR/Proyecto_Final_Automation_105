@@ -1,7 +1,6 @@
 //list of codes pulled from db
-const codes = ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"]
 let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Something else", "Computer science", "data science", "something "]
-
+let codes = ['AAAAA', 'BBBBB', 'CCCCC', 'DDDDD', 'EEEEE']
 
 //this boolean will be pulled from student class
 let userEnrolled = false
@@ -42,6 +41,9 @@ function showModal() {
     modalContainer.classList.add('show');
 }
 
+function setCodes(list) {
+    codes = list
+}
 
 
 function getRandomCode() {
@@ -124,24 +126,18 @@ function setSubjects () {
 }
 
 
-console.log(typeof(getCodeIndexes()))
-
-
-
-
-// YESSID //
-
-// const UI = require ("../../Backend/config/dataEnrollment.js")
-function postSomething(){
-    fetch('http://localhost:8000/bank', {
-    method: "POST",
-    // body: JSON.stringify({"id_enrollment": `${obj.id_enrollment}`,
-    // "validation_date": `${obj.validation_date}`,
-    // "date": `${obj.date}`,
-    headers: {"Content-type": "application/json; charset=UTF-8"}
-}).then(response => response.json())
-.then(json => console.log(json))
+function getCodesbyID (){
+    let userId = localStorage.getItem('userId')
+    fetch(`http://localhost:8000/enrollment/codes/${userId}`).then((res)=>{       
+        return res.json();
+    }).then((data) => {
+        let info = data['data']
+        console.log(info.code1)
+        let codes = [info.code1, info.code2, info.code3, info.code4, info.code5]
+        console.log(codes)
+        validateCodes(codes)
+    })
 }
 
-postSomething()
-
+function validateCodes(list) {
+}

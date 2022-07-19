@@ -2,6 +2,7 @@ const { getAllStudentEnrollment,
     getStudentEnrollmentById, 
     insertStudentEnrollment, 
     deleteStudentEnrollment} = require('../config/studentEnrollment')
+const { getCodeById} = require('../config/code')
 
 
 const postStudentEnrollment  = async (req, res, next) => {
@@ -27,4 +28,8 @@ const deleteStudents = (req, res, next) => {
     deleteStudentEnrollment(req.params.id, res)
 }
 
-module.exports = { postStudentEnrollment, getEnrollment, deleteStudents, getAllStudentEnrollments};
+const getCodesById = (req, res, next) => {
+    getCodeById(req.params.id, res)
+}
+
+module.exports = { postStudentEnrollment, getEnrollment, deleteStudents, getAllStudentEnrollments, getCodesById};
