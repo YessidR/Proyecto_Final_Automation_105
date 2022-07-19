@@ -39,7 +39,7 @@ app.get("/", (req, res, next) => {
     res.json({"Message": "200: OK"});
 });
 
-app.use("/localsvc", onlineSvcRouter);
+app.use("/localsvc", localSvcRouter);
 app.use("/onlinesvc", onlineSvcRouter);
 app.use("/busacc", busAccRouter);
 app.use("/usracc", usrAccRouter);
