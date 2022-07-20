@@ -7,7 +7,6 @@ const database = new sqlite3.Database(dbPath, err => {
         return console.log("Getting error " + err);;
     } else {
         createTables();
-        console.log("Connected to database! :D")
     }
 });
 
@@ -65,22 +64,7 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
                           NOT NULL,
     password      VARCHAR NOT NULL,
     status        BOOLEAN
-);
-`
 
-const codeTable = `CREATE TABLE IF NOT EXISTS Code (
-    id_code INTEGER PRIMARY KEY AUTOINCREMENT
-                    NOT NULL,
-    code1   TEXT    NOT NULL
-                    UNIQUE,
-    code2   TEXT    UNIQUE
-                    NOT NULL,
-    code3   TEXT    NOT NULL
-                    UNIQUE,
-    code4   TEXT    UNIQUE
-                    NOT NULL,
-    code5   TEXT    UNIQUE
-                    NOT NULL
 );
 `
 
@@ -88,7 +72,8 @@ const codeTable = `CREATE TABLE IF NOT EXISTS Code (
 const enrollmentTable = `CREATE TABLE IF NOT EXISTS Enrollment (
     id   INTEGER PRIMARY KEY AUTOINCREMENT 
                          NOT NULL,
-    id_student   TEXT NOT NULL,
+    id_student      TEXT NOT NULL
+                         UNIQUE,
     validation_date DATE NOT NULL,
     date            DATE NOT NULL,
     code_1          TEXT NOT NULL,
@@ -100,7 +85,6 @@ const enrollmentTable = `CREATE TABLE IF NOT EXISTS Enrollment (
 `
 const createTables = () => {
     database.serialize(function(){
-        database.run(codeTable);
         database.run(teacherTable);
         database.run(enrollmentTable);
         database.run(studentTable);

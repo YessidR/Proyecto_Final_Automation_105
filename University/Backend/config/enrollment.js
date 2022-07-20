@@ -1,20 +1,5 @@
 const { database } = require('./databaseManager');
 
-const insertEnrollment = (data, res) => {
-    let query = "INSERT INTO Enrollment (validation_date, date) VALUES (?, ?)"
-    database.run(query, [data.validation_date, data.date], function (err, result) {
-        if (err){
-            res.status(400).json({"error": err.message})
-            return;
-        }
-        res.json({
-            "message": "success",
-            "data": data,
-            "id" : this.lastID
-        });
-    }) 
-}
-
 const getAllEnrollment = (res) => { 
     let query = "SELECT * FROM Enrollment"
     database.all(query, (err, data) => {
@@ -43,9 +28,9 @@ const getEnrollmentById = (enrollmentId, res) => {
       });
 }
 
-const updateEnrollment = (data, enrollmentId, res) => {
+const updateEnrollment = ( enrollmentId, res) => {
     let query = `UPDATE Enrollment set date = COALESCE(?,date) WHERE id_enrollment = ?`;
-    database.run(query,[data, enrollmentId], function (err, result) {
+    database.run(query,[enrollmentId], function (err, result) {
             if (err){
                 res.status(400).json({"error": res.message})
                 return;
@@ -73,12 +58,15 @@ const deleteEnrollment = (enrollmentId, res) => {
 
 const newEnrollment = (data, res) => {
     let query = "INSERT INTO Enrollment (id_student, validation_date, date, code_1, code_2, code_3, code_4, code_5) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    database.run(query, [data.id_student, data.validation_date, data.date, data.code_1, data.code_2, data.code_3, data.code_4, data.code_5], function (err, result) {
-        if (err){
-            res.status(400).json({"error": err.message})
-            return;
+    database.run(query, [data.id_student, data.validation_date, data.date, data.code_1, data.code_2, data.code_3, data.code_4, data.code_5], 
+        function (err, result) {
+            if (err){
+                res.status(400).json({"error": err.message})
+                return;
+            }
         }
-    }) 
+    ) 
+    return "test passed";
 }
 
-module.exports = { insertEnrollment, getAllEnrollment, getEnrollmentById, deleteEnrollment, updateEnrollment, newEnrollment }
+module.exports = { getAllEnrollment, getEnrollmentById, deleteEnrollment, updateEnrollment, newEnrollment }
