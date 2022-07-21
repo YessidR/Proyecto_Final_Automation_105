@@ -1,6 +1,6 @@
 //list of codes pulled from db
-let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Something else", "Computer science", "data science", "something "]
-let codes = ['AAAAA', 'BBBBB', 'CCCCC', 'DDDDD', 'EEEEE']
+let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Programming", "Computer science", "Data science"]
+//let codes = ['AAAAA', 'BBBBB', 'CCCCC', 'DDDDD', 'EEEEE']
 
 //this boolean will be pulled from student class
 let userEnrolled = false
@@ -41,10 +41,6 @@ function showModal() {
     modalContainer.classList.add('show');
 }
 
-function setCodes(list) {
-    codes = list
-}
-
 
 function getRandomCode() {
    return Math.floor(Math.random()*5+1)
@@ -66,12 +62,14 @@ return {code1, code2}
 
 let {code1, code2} = getCodeIndexes();
 
-console.log(codes[(code1-1)], code1)
-console.log(codes[(code2-1)], code2)
+//console.log(codes[(code1-1)], code1)
+//console.log(codes[(code2-1)], code2)
 
 function checkCodes() {
+    let codes = localStorage.getItem('codes').split(",")
+    
     if ((codeElement1.value).toUpperCase() == codes[(code1-1)] && (codeElement2.value).toUpperCase() == codes[(code2-1)]) {
-        alert("all good")
+        swal("Looks good!")
         console.log("nice")
 
         //need to push this to db
@@ -79,10 +77,9 @@ function checkCodes() {
         checkBoxes.forEach(element => {
             element.disabled = false;
         });
-
         hideModal()
     } else {
-        alert("oops, wrong codes")
+        swal("Oops, wrong codes!")
         //console.log(`code 1 is ${codeElement1.value} and it should say ${codes[(code1-1)]}`)
         //console.log(`code 2 is ${codeElement2.value} and it should say ${codes[(code2-1)]}`)
     }
@@ -118,9 +115,9 @@ function setSubjects () {
             enrolledsubjects.push(checkedSubjectElem.textContent)
 
         });
-        alert(`You have successfully enrolled in ${enrolledsubjects.join(". ")}`)
+        swal("", `You have successfully enrolled in ${enrolledsubjects.join(". ")}`)
     } else {
-        alert("No subjects selected!")
+        swal("","No subjects selected!", "error")
     }
     return enrolledsubjects
 }
@@ -132,12 +129,12 @@ function getCodesbyID (){
         return res.json();
     }).then((data) => {
         let info = data['data']
-        console.log(info.code1)
         let codes = [info.code1, info.code2, info.code3, info.code4, info.code5]
         console.log(codes)
-        validateCodes(codes)
+        localStorage.setItem('codes', codes)
     })
 }
 
-function validateCodes(list) {
-}
+
+//call codes when page is loaded
+getCodesbyID()
