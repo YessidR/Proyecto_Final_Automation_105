@@ -1,5 +1,5 @@
-// Create express app
-const express = require("express");
+const http = require('http');
+const express = require('express');
 const app = express();
 const enrollmentRouter = require("./routes/studentEnrollment");
 const profileRouter = require("./routes/profile");
@@ -31,9 +31,5 @@ app.use("/subject", subjectRouter);
 app.use("/teacher",teacherRouter);
 app.use("/auth", authenticationRouter);
 
-// Default response for any other request
-app.use(function(req, res){
-    res.status(404);
-});
 
 

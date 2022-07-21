@@ -4,6 +4,7 @@ let logInButton = document.getElementById('boton')
 let wrongPassOrUser = document.querySelector('.msg')
 
 
+
 logInButton.addEventListener('click', getCredentials, hideMsg)
 
 const username = userElem.value
@@ -33,8 +34,10 @@ function getCredentials(){
 function checkCredentials(pw) {
     if (passwordElem.value === pw) {
         hideMsg()
+        swal('Welcome!', `Logged in as ${localStorage.getItem('firstname')}`, 'success') . then( () => {
         window.location.replace('./index.html')
         return userId;
+    })
     } else {
         showMsg()
     }

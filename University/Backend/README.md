@@ -4,6 +4,7 @@
 - express 
 - sqlite3 (database)
 - ejs (to show me the .html file)
+- csv-parser (to read csv file)
 
 ## DATABASE
 - db.js --> Includes the code for connecting the database

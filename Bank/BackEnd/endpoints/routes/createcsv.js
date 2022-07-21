@@ -11,7 +11,7 @@ const getStudentEnrollmentById = (res) => {
       return;
     }
     
-    let csv = "Student Code, Date Time, Details" + "\r\n";
+    let csv = "Student-Code,Date-Time,Details" + "\r\n";
     for (let index = 0; index < data.length; index++) {
       csv += data[index].StudentCode + "," + data[index].DateTime + "," + data[index].Details + "\r\n"
     }

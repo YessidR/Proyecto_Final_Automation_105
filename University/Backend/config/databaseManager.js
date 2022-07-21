@@ -7,7 +7,6 @@ const database = new sqlite3.Database(dbPath, err => {
         return console.log("Getting error " + err);;
     } else {
         createTables();
-        console.log("Connected to database! :D")
     }
 });
 
@@ -54,6 +53,7 @@ const teacherTable = `CREATE TABLE IF NOT EXISTS Teacher (
 );
 `
 
+// Deleted foreign keys from (id_enrollment and id_code)
 const studentTable = `CREATE TABLE IF NOT EXISTS Student (
     id_student    INTEGER PRIMARY KEY AUTOINCREMENT
                           NOT NULL,
@@ -63,40 +63,28 @@ const studentTable = `CREATE TABLE IF NOT EXISTS Student (
     username      VARCHAR UNIQUE
                           NOT NULL,
     password      VARCHAR NOT NULL,
-    status        BOOLEAN,
-    id_enrollment INTEGER REFERENCES Enrollment (id_enrollment) 
-                          NOT NULL,
-    id_code       INTEGER REFERENCES Code (id_code) 
-                          NOT NULL
+    status        BOOLEAN
+
 );
 `
 
-const codeTable = `CREATE TABLE IF NOT EXISTS Code (
-    id_code INTEGER PRIMARY KEY AUTOINCREMENT
-                    NOT NULL,
-    code1   TEXT    NOT NULL
-                    UNIQUE,
-    code2   TEXT    UNIQUE
-                    NOT NULL,
-    code3   TEXT    NOT NULL
-                    UNIQUE,
-    code4   TEXT    UNIQUE
-                    NOT NULL,
-    code5   TEXT    UNIQUE
-                    NOT NULL
-);
-`
-
+// Edited to insert codes in this table
 const enrollmentTable = `CREATE TABLE IF NOT EXISTS Enrollment (
-    id_enrollment   INTEGER PRIMARY KEY AUTOINCREMENT
+    id   INTEGER PRIMARY KEY AUTOINCREMENT 
                          NOT NULL,
+    id_student      TEXT NOT NULL
+                         UNIQUE,
     validation_date DATE NOT NULL,
-    date            DATE NOT NULL
+    date            DATE NOT NULL,
+    code_1          TEXT NOT NULL,
+    code_2          TEXT NOT NULL,
+    code_3          TEXT NOT NULL,
+    code_4          TEXT NOT NULL,
+    code_5          TEXT NOT NULL
 );
 `
 const createTables = () => {
     database.serialize(function(){
-        database.run(codeTable);
         database.run(teacherTable);
         database.run(enrollmentTable);
         database.run(studentTable);
