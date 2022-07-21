@@ -1,8 +1,10 @@
-// Create express app
-const express = require("express");
+const http = require('http');
+const express = require('express');
 const app = express();
 const enrollmentRouter = require("./routes/studentEnrollment");
 const profileRouter = require("./routes/profile");
+const subjectRouter = require("./routes/subject");
+const teacherRouter = require("./routes/teacher");
 const authenticationRouter = require("./routes/authentication");
 
 const cors=require("cors");
@@ -25,11 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use("/enrollment", enrollmentRouter);
 app.use("/profile", profileRouter);
-app.use("/auth", authenticationRouter)
+app.use("/subject", subjectRouter);
+app.use("/teacher",teacherRouter);
+app.use("/auth", authenticationRouter);
 
-// Default response for any other request
-app.use(function(req, res){
-    res.status(404);
-});
 
 
