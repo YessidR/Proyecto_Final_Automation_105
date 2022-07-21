@@ -37,6 +37,16 @@ const getUniData = (id) => {
   .catch(error => console.warn(error));
 }
 
+const getReq = () => {
+  fetch('http://localhost:8000/getStudentEnrollmentPayment',{
+      method: "GET",
+  })
+  .then((response) => response.json())
+  .then((responseData) => {
+      console.log( responseData);
+  })
+  .catch(error => console.warn(error));
+}
 
 const getUniSvc = () =>{
     return fetch('http://localhost:8000/onlinesvc/', {
@@ -71,8 +81,11 @@ function uniUpdate  (){
   } 
 }
 
+
+
 const payFnc = () =>{
-  uniUpdate()
+  uniUpdate();
+  getReq();
 }
 
 let payBtn = document.querySelector(".pay-btn").onclick = payFnc
