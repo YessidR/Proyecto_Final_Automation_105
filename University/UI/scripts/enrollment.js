@@ -2,7 +2,6 @@
 let courses = ["Math", "Algebra", "Trigonometry", "Calculus", "Programming", "Computer science", "Data science"]
 //let codes = ['AAAAA', 'BBBBB', 'CCCCC', 'DDDDD', 'EEEEE']
 
-//this boolean will be pulled from student class
 let userEnrolled = false
 
 //dom elements
@@ -14,7 +13,7 @@ const modalContainer = document.querySelector(".modal-container");
 const modalCloseButton = document.querySelector(".modal-close");
 const checkBoxes = document.getElementsByName("checkbox");
 const endEndrollmentButton = document.querySelector(".end-enrollment")
-
+const subjectContainer = document.querySelector(".subject-container")
 
 //event listeners
 checkCodeHandler.addEventListener('click', checkCodes)
@@ -22,7 +21,7 @@ modalCloseButton.addEventListener('click', hideModal)
 endEndrollmentButton.addEventListener('click', setSubjects)
 
 
-const subjectContainer = document.querySelector(".subject-container")
+//populate page with subjects
 courses.forEach(course => {
     
     var newDiv = document.createElement("div");
@@ -32,16 +31,17 @@ courses.forEach(course => {
     subjectContainer.appendChild(newDiv)
 });
 
-
+//hide modal with code input
 function hideModal() {
     modalContainer.classList.remove('show');
 }
 
+//show modal with code input
 function showModal() {
     modalContainer.classList.add('show');
 }
 
-
+//get random index of code list
 function getRandomCode() {
    return Math.floor(Math.random()*5+1)
 }
@@ -104,7 +104,7 @@ function selectiveCheck () {
     return false;
 }
 
-
+//Update subjects for user in DB - print subjects (Need update part)
 function setSubjects () {
     let checkedChecks = document.querySelectorAll(".subject-checkbox:checked");
     if (checkedChecks.length > 0) {
@@ -122,7 +122,7 @@ function setSubjects () {
     return enrolledsubjects
 }
 
-
+//get codes from DB and store them into "codes"
 function getCodesbyID (){
     let userId = localStorage.getItem('userId')
     fetch(`http://localhost:8000/enrollment/codes/${userId}`).then((res)=>{       
