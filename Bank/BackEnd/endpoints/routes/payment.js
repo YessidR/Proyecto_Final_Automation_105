@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router();
-const db = require("../database.js");
+const db = require("../../database.js");
 
 const pay = {
 
@@ -8,12 +8,11 @@ const pay = {
     Amount: "50",
     Type: "ahorros",
     Details: "pago virtual",
-
 }
 
 const apppayment = () => {
     let insert = 'INSERT INTO Transactions(Number,DateTime,Amount,Type,Details) VALUES (?,?,?,?,?)';
-    db.run(insert, ["2", "10 agosto", 89,"ahorros", "pago virtual"],(err) => console.log(err))
+    db.run(insert, ["234ssdassd4", "100 agosto", 889,"ahorross", "pago visrtual"],(err) => console.log(err))
 
 }
 

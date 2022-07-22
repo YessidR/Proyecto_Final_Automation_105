@@ -41,12 +41,15 @@ a {
 
 
 .header {
+    display: flex;
     position: absolute;
     left: 0%;
     right: 0%;
     top: 0%;
     bottom: 73.96%;
     background: linear-gradient(0deg, rgba(0, 32, 116, 0.46), rgba(0, 32, 116, 0.46)), #468BBD;
+    justify-content: end;
+    align-items: flex-end;
 }
 
 .home-btn {
@@ -86,9 +89,14 @@ img {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    margin: 25px;
+    margin: 0px;
+    padding: 25px;
     letter-spacing: 0.15px;
     color: rgba(0, 0, 0, 0.87);
+}
+.sidebar-btn:hover {
+    background-color: #468BBD;
+    transition: 0.9s;
 }
 
 .modal-container {
@@ -188,4 +196,8 @@ tr:hover td{
     background-color: #468BBD;
     color: white;
     transition: 0.9s;
+}
+
+.greeting{
+    color: #D9D9D9;
 }
