@@ -2,7 +2,6 @@ const { getAllStudentEnrollment,
     getStudentEnrollmentById, 
     insertStudentEnrollment, 
     deleteStudentEnrollment} = require('../config/studentEnrollment')
-const { getCodeById} = require('../config/code')
 
 
 const postStudentEnrollment  = async (req, res, next) => {

@@ -1,4 +1,4 @@
-const {newEnrollment} = require('./config/Enrollment');
+const {newEnrollment} = require('../config/Enrollment');
 
 test('insert into Enrollment Table: ', () => {
     data = {

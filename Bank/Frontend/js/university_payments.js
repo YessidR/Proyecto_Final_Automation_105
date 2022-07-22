@@ -81,8 +81,6 @@ function uniUpdate  (){
   } 
 }
 
-
-
 const payFnc = () =>{
   uniUpdate();
   getReq();

@@ -31,5 +31,10 @@ app.use("/subject", subjectRouter);
 app.use("/teacher",teacherRouter);
 app.use("/auth", authenticationRouter);
 
+// Default response for any other request
+app.use((req, res, next) => {
+    res.status(404);
+    res.json({message: 'Not found'});
+  });
 
-
+module.exports = app;
