@@ -1,6 +1,8 @@
-var account_target = document.querySelector(".account-target");
-var ammount_target = document.querySelector(".ammount-target");
-var pay_btn = document.querySelector(".transfer-btn").onclick = make_transfer;
+try{
+    var account_target = document.querySelector(".account-target");
+    var ammount_target = document.querySelector(".ammount-target");
+    var pay_btn = document.querySelector(".transfer-btn").onclick = make_transfer;
+}catch(error){}
 
 getId = (max,min) =>{
    return Math.floor(Math.random()*(max-min)+min); 
@@ -25,3 +27,7 @@ function make_transfer(){
         console.log(transaction)
     }
 }
+
+try{
+    module.exports = getDate;
+}catch(error){}

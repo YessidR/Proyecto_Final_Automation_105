@@ -3,7 +3,7 @@ try{
     var password = document.querySelector(".input-password")
     var downMessage = document.querySelector(".notify")
 }catch(error){
-    console.log('ommiting errors')
+    
 }
 
 let attemps = 3;
@@ -67,10 +67,10 @@ const validation = () => {
 try{
     var loginBtn = document.querySelector(".login-btn").onclick = validation;
 }catch(error){
-    console.log("omiting error")
+
 }
 try{
     module.exports = entryFieldVal;
 }catch(error){
-    console.log("err")
+
 }
