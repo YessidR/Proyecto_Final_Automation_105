@@ -50,7 +50,6 @@ const sendemail = () => {
       console.log("could not send the email due to " + err);
       return;
     }
-    console.log("email have been sent");
   })
 }
 

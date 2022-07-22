@@ -55,3 +55,5 @@ app.use((req, res) => {
     res.status(404);
     res.json({"Message": "404: Not found"});
 });
+
+module.exports = app;
