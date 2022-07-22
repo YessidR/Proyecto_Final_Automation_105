@@ -1,10 +1,19 @@
-const LocalSvcController = require("../BackEnd/endpoints/controllers/localSvcController").LocalSvcController
-const expect = require("chai").expect
+const request = require('supertest');
 
-const url = 'http://localhost:8000'
+const app = require('../server');
 
-describe('Testing class LocalSvcController', () => {
-    it('1. ', (done) => {
+describe('getStudentEnrollmentPayment routes', () => {
+  it('Should return found', async () => {
+    const response = await request(app).get('/getStudentEnrollmentPayment');
 
-    }) 
-})
+    expect(response.statusCode).toBe(200);
+  });
+});
+
+describe('paymentenrollement routes', () => {
+    it('Should return found', async () => {
+      const response = await request(app).post('/paymentenrollement');
+  
+      expect(response.statusCode).toBe(200);
+    });
+  });
