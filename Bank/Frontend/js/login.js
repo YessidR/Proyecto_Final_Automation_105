@@ -1,6 +1,11 @@
-let nameAccount = document.querySelector(".input-name")
-let password = document.querySelector(".input-password")
-let downMessage = document.querySelector(".notify")
+try{
+    var nameAccount = document.querySelector(".input-name")
+    var password = document.querySelector(".input-password")
+    var downMessage = document.querySelector(".notify")
+}catch(error){
+    console.log('ommiting errors')
+}
+
 let attemps = 3;
 
 const userPwdVal = (username, pwd) => {
@@ -23,7 +28,12 @@ const userPwdVal = (username, pwd) => {
 
 const entryFieldVal = (username, pwd) =>{
     if(pwd.length == 0 || username.length == 0){
-        downMessage.innerHTML = "Invalid username or password!";
+        try{
+            downMessage.innerHTML = "Invalid username or password!";
+        }catch(error){
+            console.log("err");
+        }   
+        
         return false;
     }
     else{
@@ -54,4 +64,13 @@ const validation = () => {
     attemps-=1;
 }
 
-let loginBtn = document.querySelector(".login-btn").onclick = validation;
+try{
+    var loginBtn = document.querySelector(".login-btn").onclick = validation;
+}catch(error){
+    console.log("omiting error")
+}
+try{
+    module.exports = entryFieldVal;
+}catch(error){
+    console.log("err")
+}
