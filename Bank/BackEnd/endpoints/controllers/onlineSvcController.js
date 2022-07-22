@@ -64,8 +64,8 @@ const transactionStudentCode = (req, res, next) => {
 const transactionPost = (req, res, next) => {
     const errors = [];
 
-    if (!req.body.transactionnumber)
-        errors.push("No transactionnumber specified");
+    // if (!req.body.transactionnumber)
+    //     errors.push("No transactionnumber specified");
     if (!req.body.studentcode)
         errors.push("No studentcode specified");
     if (!req.body.amount)
@@ -80,7 +80,7 @@ const transactionPost = (req, res, next) => {
     }
 
     const data = {
-        transactionnumber: req.body.transactionnumber,
+        transactionnumber: getTransacionNumber(),
         studentcode: req.body.studentcode,
         datetime: Date(),
         amount: req.body.amount,
@@ -148,5 +148,11 @@ const transactionDelete = (req, res, next) => {
 function getDepositAmount(universityId) {
 
 } // getDepositAmount()
+
+let transactionNumber = 2;
+
+function getTransacionNumber() {
+    return ++transactionNumber;
+}
 
 module.exports = {transactions, transactionId, transactionStudentCode, transactionPost, transactionPatch, transactionDelete};
