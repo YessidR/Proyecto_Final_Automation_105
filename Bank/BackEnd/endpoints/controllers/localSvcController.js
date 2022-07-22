@@ -1,22 +1,6 @@
 const db = require("../../database");
 
 class LocalSvcController {
-    transactionId = (req, res, next) => {
-        const query = "SELECT * FROM UniversityServiceLocal WHERE ID = ?"
-        const params = [req.params.id];
-        
-        db.get(query, params, (err, row) => {
-            if (err) {
-                res.status(400).json({error: err.message});
-                return;
-            }
-            res.status(200).json({
-                message: "Success",
-                data: row
-            });
-        });
-    }; // transaction
-
     transactions = (req, res, next) => {
         const query = "SELECT * FROM UniversityServiceLocal";
         const params = [];
@@ -32,6 +16,22 @@ class LocalSvcController {
             });
         });
     }; // transactions
+
+    transactionId = (req, res, next) => {
+        const query = "SELECT * FROM UniversityServiceLocal WHERE ID = ?"
+        const params = [req.params.id];
+        
+        db.get(query, params, (err, row) => {
+            if (err) {
+                res.status(400).json({error: err.message});
+                return;
+            }
+            res.status(200).json({
+                message: "Success",
+                data: row
+            });
+        });
+    }; // transaction
     
     transactionStudentCode = (req, res, next) => {
         const errors = [];

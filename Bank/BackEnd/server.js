@@ -14,13 +14,11 @@ const userRouter = require("./endpoints/routes/userRoutes");
 const paymentenrollement = require("./endpoints/routes/payment");
 const getStudentEnrollmentPayment = require("./endpoints/routes/createcsv");
 
-
-
 const app = express();
 const server = http.createServer(app);
 const HTTP_PORT = process.env.PORT || 8000;
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 const corsOptions = {
@@ -55,3 +53,5 @@ app.use((req, res) => {
     res.status(404);
     res.json({"Message": "404: Not found"});
 });
+
+module.exports = app
